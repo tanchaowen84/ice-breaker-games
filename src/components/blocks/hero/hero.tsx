@@ -2,11 +2,11 @@
 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
-import { AnimatePresence, motion } from 'framer-motion';
 
 const SURPRISE_OPTION = 'Surprise Pick';
 
@@ -158,7 +158,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/60 py-24 sm:py-28"
+      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/60 py-12 sm:py-12"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-14 px-6 lg:flex-row lg:items-stretch lg:gap-20">
         <div className="flex w-full max-w-xl flex-col items-start text-left">
