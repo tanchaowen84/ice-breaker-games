@@ -617,59 +617,59 @@
       "tap": "Tap the wheel to spin again"
     },
     "quickStart": {
-      "eyebrow": "Quick-start collections",
-      "title": "Grab a ready-to-run set in seconds",
-      "description": "Short on time? Our launch collections will package games by duration, materials, and group vibe. We’re polishing the first sets now.",
-      "soonNote": "Collections are in production—save this page to be first in line when they open.",
+      "eyebrow": "Quick ice breaker picks",
+      "title": "Quick ice breaker games when the clock is ticking",
+      "description": "Give standups, orientations, and last-minute meetings a jump-start with bite-size ice breaker games that need zero prep. We’re finalizing playlists for 5-minute warmups, no-material prompts, and remote-first teams.",
+      "soonNote": "Collections are in production—bookmark this space to get first access as soon as they ship.",
       "imageAlt": "Preview of featured ice breaker collections",
       "imageBadge": "Pilot set"
     },
     "sceneHub": {
-      "eyebrow": "Scene hub",
-      "title": "Pick a vibe that fits today",
-      "description": "Browse by audience or setting, then bookmark the mixes you use most. We’re building deep dives for each scene—let us know what you need first!",
+      "eyebrow": "Browse by scene",
+      "title": "Explorer: ice breaker games for every scene",
+      "description": "Scan the scenes your crew asks for most—meetings, team building, adults, teens, kids, quick hits, large groups, fun-first, and hybrid sessions. Each tile will grow into a dedicated guide linking to the best ice breaker games for that setting.",
       "scenes": {
         "work": {
           "label": "Work",
-          "helper": "Team syncs, all-hands, offsites"
+          "helper": "Reliable ice breakers for teams"
         },
         "meetings": {
           "label": "Meetings",
-          "helper": "Kickoffs, retros, project check-ins"
+          "helper": "Agenda-friendly ideas for facilitators"
         },
         "adults": {
           "label": "Adults",
-          "helper": "Relaxed & social"
+          "helper": "Relaxed & social gatherings"
         },
         "teens": {
           "label": "Teens",
-          "helper": "High engagement"
+          "helper": "High-energy classroom & camp games"
         },
         "kids": {
           "label": "Kids",
-          "helper": "Easy to run"
+          "helper": "Easy-to-run kid-friendly choices"
         },
         "largeGroups": {
           "label": "Large groups",
-          "helper": "Scales to 30+"
+          "helper": "Scales to 30+ participants"
         },
         "quick": {
           "label": "Quick (5–10 minutes)",
-          "helper": "Short and lively"
+          "helper": "Short and lively energizers"
         },
         "fun": {
           "label": "Fun picks",
-          "helper": "Just for laughs"
+          "helper": "Laugh-first crowd pleasers"
         }
       },
-      "footnote": "Scene deep dives will open gradually—tap the ones you need most and we’ll prioritize them.",
+      "footnote": "Scene deep dives will open gradually—tell us which ice breaker game collections you want prioritized, and we’ll link the finished hubs right here.",
       "imageAlt": "Selection board showing ice breaker scenes",
       "imageBadge": "Scene lab"
     },
     "questionBank": {
-      "eyebrow": "Question bank",
-      "title": "Swap talk tracks on the fly",
-      "description": "Build momentum with prompts tuned for every mood—from playful to thoughtful to business-ready. The full bank is coming online shortly.",
+      "eyebrow": "Icebreaker questions",
+      "title": "Icebreaker questions ready to drop into any agenda",
+      "description": "Queue up playful, thoughtful, or work-safe prompts in seconds. We’re codifying a searchable bank of icebreaker questions you can spin up for meetings, classrooms, and virtual rooms alike.",
       "moods": {
         "funny": "Funny",
         "deep": "Deep",
@@ -680,7 +680,7 @@
       },
       "highlight": {
         "title": "Question spinner",
-        "description": "Shuffle through curated prompts when silence hits or energy dips.",
+        "description": "Shuffle through curated icebreaker questions when conversation stalls—launchable straight from the browser.",
         "cta": "Spin a question (soon)"
       },
       "imageAlt": "Cards showing ice breaker question prompts",
@@ -923,43 +923,43 @@
     },
     "faqs": {
       "title": "FAQ",
-      "subtitle": "Frequently Asked Questions",
+      "subtitle": "Answers to popular ice breaker questions",
       "items": {
         "item-1": {
-          "question": "Is there a free version of FlowChart AI?",
-          "answer": "Yes. FlowChart AI is open-sourced under the MIT License and available on GitHub. You can self-host and modify it freely. We also offer a free tier — every registered user can generate one AI flowchart per day for free."
+          "question": "What is a fun quick ice breaker game?",
+          "answer": "Try low-friction activities like “Two Truths and a Lie” or “Speed Connections.” They require no prep, get everyone talking within a minute, and plug perfectly into our Quick Ice Breaker Picks section."
         },
         "item-2": {
-          "question": "What formats can I export my diagrams to?",
-          "answer": "Currently, we support exporting flowcharts in Excalidraw format only. In future updates, we plan to add support for PDF, PNG, and SVG formats."
+          "question": "What are three fun ice breaker questions to start with?",
+          "answer": "Kick things off with questions such as “What song is your personal theme today?”, “Which fictional world would you vacation in?”, and “What’s the best surprise you’ve ever pulled off?” Our Question Bank will bundle more prompts by mood and audience."
         },
         "item-3": {
-          "question": "Can I manage my flowcharts and access them later?",
-          "answer": "Yes. FlowChart AI provides a personal workspace where you can save, manage, and edit your flowcharts anytime, from anywhere."
+          "question": "What is a good 15-minute icebreaker activity?",
+          "answer": "For a longer opener, combine a quick warm-up with a mini showcase—think “Show & Tell Snapshot” where each person shares a photo and the story behind it. It fills 10–15 minutes without dragging and appears in our upcoming scene guides."
         },
         "item-4": {
-          "question": "What AI capabilities does FlowChart AI offer?",
-          "answer": "FlowChart AI allows users to describe their processes or workflows in natural language. The AI interprets the input, handles intelligent layout and diagram structure, and generates editable flowcharts accordingly."
+          "question": "How can icebreaker games boost work productivity?",
+          "answer": "Icebreakers help teams build trust faster, making collaboration smoother once the real work begins. Use them at project launches or after org changes to reset energy and encourage cross-team conversation."
         },
         "item-5": {
-          "question": "How can I upgrade or change my plan?",
-          "answer": "Yes. You can freely upgrade, downgrade, or cancel your plan through your account's billing settings."
+          "question": "When should I add ice breaker games to meetings?",
+          "answer": "Use them whenever you sense low energy, during new team kickoffs, or before working sessions that rely on open dialogue. Keep a few quick picks bookmarked so you can pivot based on group mood."
         },
         "item-6": {
-          "question": "How complex of a flowchart can FlowChart AI generate?",
-          "answer": "There is no strict limit on the complexity of flowcharts. The actual capability depends on the content and structure of your input."
+          "question": "What are Zoom icebreakers?",
+          "answer": "Zoom icebreakers are activities designed for virtual rooms—think chat bursts, reactions-based polls, or spinner prompts where everyone answers in turn. Our random wheel makes it easy to spin a topic live."
         },
         "item-7": {
-          "question": "How do I write effective prompts?",
-          "answer": "Use clear natural language and structured steps. You may optionally upload reference images to aid AI understanding. FlowChart AI will then convert your input into a structured diagram."
+          "question": "Why start a Zoom meeting with an ice breaker?",
+          "answer": "Opening with an ice breaker helps remote teams shake off screen fatigue, encourages cameras on, and sparks quicker participation once you shift into agenda items."
         },
         "item-8": {
-          "question": "Can teams collaborate on flowcharts?",
-          "answer": "Currently, FlowChart AI is built for individual use. Team collaboration and shared workspaces are part of our future roadmap."
+          "question": "What are some fun Zoom icebreaker ideas?",
+          "answer": "Try “Virtual Background Story,” “Emoji Check-in,” or a quick round of “Would You Rather?” Our Question Bank will include virtual-friendly tags so you can filter for remote sessions instantly."
         },
         "item-9": {
-          "question": "Can I generate diagrams from uploaded documents?",
-          "answer": "At the moment, FlowChart AI supports text and image inputs only. Support for document uploads including PDF, Markdown, and other formats is under active development."
+          "question": "How do I choose a short ice breaker for remote teams?",
+          "answer": "Scan for activities that need no props, cap at 2–5 minutes, and let everyone speak once. Use our Quick Picks for fast matches or spin the wheel for a surprise option."
         }
       }
     },
