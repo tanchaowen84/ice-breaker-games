@@ -7,22 +7,75 @@ import { useTranslations } from 'next-intl';
 import { useCallback, useMemo, useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
 
+const SURPRISE_OPTION = 'Surprise Pick';
+
 const wheelData = [
   { option: 'Two Truths and a Lie' },
-  { option: 'Speed Connections' },
-  { option: 'Emoji Introductions' },
-  { option: 'Show & Tell Snapshot' },
-  { option: 'Common Ground Sprint' },
-  { option: 'Would You Rather?' },
-  { option: 'Story Dice Remix' },
-  { option: 'Lightning Trivia' },
-  { option: 'Rapid Fire Questions' },
-  { option: 'Human Bingo' },
-  { option: 'Hot Seat' },
-  { option: 'Team Charades' },
-  { option: 'Pass the Mic' },
+  { option: 'Icebreaker Bingo' },
   { option: 'Speed Networking' },
-  { option: 'Memory Match' },
+  { option: 'Word Association' },
+  { option: 'Human Knot' },
+  { option: 'Movie Pitch' },
+  { option: 'Finish the Sentence' },
+  { option: 'Zip Zap Zop' },
+  { option: 'Beach Ball' },
+  { option: 'Guess the Person' },
+  { option: 'Egg Drop' },
+  { option: 'Balloon Tower' },
+  { option: 'Jenga Questions' },
+  { option: 'Virtual Coffee Chat' },
+  { option: SURPRISE_OPTION },
+];
+
+const randomGamePool = [
+  'Beach Ball',
+  'Spirit Animal',
+  'Field Day',
+  'Two Truths and a Lie',
+  'Egg Drop',
+  'Bumper Sticker',
+  'Six Word Memoirs',
+  'Word Association',
+  'Marshmallow Challenge',
+  'Zip Zap Zop',
+  'Human Knot',
+  'Keep It Up',
+  'Balloon Tower',
+  'Comedy Night',
+  'Finish the Sentence',
+  'Icebreaker Bingo',
+  'Pat on the Back',
+  'Picture Scavenger Hunt',
+  'Movie Pitch',
+  'Which Character Are You?',
+  'Character Descriptions',
+  'Digging Game',
+  'Find Your Twin',
+  'Guess the Person',
+  'Speed Networking',
+  'Seeing the Future',
+  'Sentence Completion',
+  'Theme Music',
+  'Jenga Questions',
+  'Hula Hoop Relay',
+  'Giant Map',
+  'Social Bingo',
+  'Telephone Charades',
+  'Celebrity Heads',
+  'Personality Shapes',
+  'Where Were You When…',
+  'Ideal Vacation',
+  'Meeting Bingo',
+  'Social Media Share',
+  'Virtual Coffee Chat',
+  'Pop a Question',
+  'Name Ball',
+  'Quotes Game',
+  'Blindfolded Obstacle Course',
+  'Personal Slogan',
+  'Questions Only',
+  'Office Escape Room',
+  'Song That Describes You',
 ];
 
 const wheelBackgroundColors = [
@@ -50,19 +103,38 @@ export default function HeroSection() {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
+  const [pendingGame, setPendingGame] = useState<string | null>(null);
 
   const handleSpin = useCallback(() => {
     if (mustSpin) return;
 
-    const nextPrize = Math.floor(Math.random() * wheelData.length);
+    const nextGame =
+      randomGamePool[Math.floor(Math.random() * randomGamePool.length)];
+
+    const directMatchIndex = wheelData.findIndex(
+      (item) => item.option === nextGame
+    );
+    const surpriseIndex = wheelData.findIndex(
+      (item) => item.option === SURPRISE_OPTION
+    );
+
+    const nextPrize =
+      directMatchIndex !== -1
+        ? directMatchIndex
+        : surpriseIndex !== -1
+          ? surpriseIndex
+          : Math.floor(Math.random() * wheelData.length);
+
+    setPendingGame(nextGame ?? null);
     setPrizeNumber(nextPrize);
     setMustSpin(true);
   }, [mustSpin]);
 
   const handleStop = useCallback(() => {
     setMustSpin(false);
-    setSelectedGame(wheelData[prizeNumber]?.option ?? null);
-  }, [prizeNumber]);
+    setSelectedGame(pendingGame ?? wheelData[prizeNumber]?.option ?? null);
+    setPendingGame(null);
+  }, [pendingGame, prizeNumber]);
 
   const spinHint = useMemo(() => {
     return mustSpin ? t('spinning') : t('hint');
