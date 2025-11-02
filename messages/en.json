@@ -660,22 +660,35 @@
     "questionBank": {
       "eyebrow": "Icebreaker questions",
       "title": "Icebreaker questions ready to drop into any agenda",
-      "description": "Queue up playful, thoughtful, or work-safe prompts in seconds. We’re codifying a searchable bank of icebreaker questions you can spin up for meetings, classrooms, and virtual rooms alike.",
-      "moods": {
-        "funny": "Funny",
-        "deep": "Deep",
-        "work": "For work",
-        "teens": "For teens",
-        "kids": "For kids",
-        "meetings": "Meetings"
+      "description": "Queue up playful, thoughtful, or work-safe prompts in seconds. We’re building category hubs so you can jump straight to ice breaker questions for work, adults, team meetings, teens, dating, and small groups.",
+      "categories": {
+        "work": {
+          "label": "Ice breaker questions for work",
+          "helper": "Openers for all-hands, onboarding, and weekly syncs"
+        },
+        "adults": {
+          "label": "Ice breaker questions for adults",
+          "helper": "Conversation starters for workshops and socials"
+        },
+        "teamMeetings": {
+          "label": "Ice breaker questions for team meetings",
+          "helper": "Quick prompts to warm up project or leadership huddles"
+        },
+        "teens": {
+          "label": "Ice breaker questions for teens",
+          "helper": "High-energy prompts for classrooms, youth groups, and camps"
+        },
+        "dating": {
+          "label": "Ice breaker questions for dating",
+          "helper": "Light, curious questions for mixers and ice breaker dates"
+        },
+        "smallGroups": {
+          "label": "Ice breaker questions for small groups",
+          "helper": "Intimate prompts ideal for cohorts of four to eight"
+        },
+        "cta": "Preview the upcoming question hub"
       },
-      "highlight": {
-        "title": "Question spinner",
-        "description": "Shuffle through curated icebreaker questions when conversation stalls—launchable straight from the browser.",
-        "cta": "Spin a question (soon)"
-      },
-      "imageAlt": "Cards showing ice breaker question prompts",
-      "imageBadge": "Prompt lab"
+      "highlightMessage": null
     },
     "logocloud": {
       "title": "Your favorite companies are our partners"
