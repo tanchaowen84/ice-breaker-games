@@ -28,34 +28,24 @@ export default function SceneHubSection() {
           </p>
         </div>
 
-        <div className="flex flex-col divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-sm">
-          {SCENE_KEYS.map((key, index) => (
-            <details
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {SCENE_KEYS.map((key) => (
+            <article
               key={key}
-              className="group"
-              data-slot="scene-item"
-              open={index === 0}
+              className="flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white/95 p-5 shadow-sm transition hover:border-slate-300"
             >
-              <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-slate-900 transition hover:bg-slate-50">
-                <span className="flex items-center gap-3">
-                  <h3 className="text-base font-semibold text-slate-900">
-                    {t(`scenes.${key}.label`)}
-                  </h3>
-                  <Badge variant="secondary" className="bg-slate-100 text-slate-600">
-                    Soon
-                  </Badge>
-                </span>
-              </summary>
-              <div className="space-y-3 bg-slate-50/60 px-5 pb-5 pt-3 text-sm text-slate-600">
-                <p>{t(`scenes.${key}.helper`)}</p>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-[#0ea5e9] hover:text-[#0284c7]"
-                >
-                  {t('scenes.cta')}
-                </a>
+              <div className="flex items-center gap-3">
+                <h3 className="text-base font-semibold text-slate-900">
+                  {t(`scenes.${key}.label`)}
+                </h3>
+                <Badge variant="secondary" className="bg-slate-100 text-slate-600">
+                  Soon
+                </Badge>
               </div>
-            </details>
+              <p className="text-sm text-slate-600">
+                {t(`scenes.${key}.helper`)}
+              </p>
+            </article>
           ))}
         </div>
 
