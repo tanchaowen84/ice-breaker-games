@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const SURPRISE_OPTION = 'Surprise Pick';
 
@@ -140,6 +141,20 @@ export default function HeroSection() {
     return mustSpin ? t('spinning') : t('hint');
   }, [mustSpin, t]);
 
+  const scenePhrases = (t.raw('scenes') as string[]) ?? [];
+  const sceneCore = t('core');
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const activeScene = scenePhrases.length ? scenePhrases[sceneIndex] : '';
+
+  useEffect(() => {
+    if (!scenePhrases?.length) return;
+    const interval = setInterval(() => {
+      setSceneIndex((prev) => (prev + 1) % scenePhrases.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, [scenePhrases]);
+
   return (
     <section
       id="hero"
@@ -147,17 +162,39 @@ export default function HeroSection() {
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-14 px-6 lg:flex-row lg:items-stretch lg:gap-20">
         <div className="flex w-full max-w-xl flex-col items-start text-left">
-          <h1 className="text-balance text-4xl font-bricolage-grotesque leading-tight tracking-tight text-foreground sm:text-5xl">
-            {t('title')}
+          <h1 className="flex flex-wrap items-baseline gap-x-2 gap-y-3 text-4xl font-bricolage-grotesque font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+            <span>{t('intro')}</span>
+            <span>{sceneCore}</span>
+            <div className="relative inline-flex">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={`${sceneIndex}-${activeScene}`}
+                  initial={{ opacity: 0, y: '40%' }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: '-40%' }}
+                  transition={{ duration: 0.35, ease: 'easeInOut' }}
+                  className={cn(
+                    'inline-flex rounded-lg px-3 py-1 text-4xl font-semibold sm:text-5xl',
+                    sceneIndex % 5 === 0 && 'bg-[#fde68a] text-[#b45309]',
+                    sceneIndex % 5 === 1 && 'bg-[#fee2e2] text-[#b91c1c]',
+                    sceneIndex % 5 === 2 && 'bg-[#e0f2fe] text-[#0369a1]',
+                    sceneIndex % 5 === 3 && 'bg-[#dcfce7] text-[#15803d]',
+                    sceneIndex % 5 === 4 && 'bg-[#ede9fe] text-[#6d28d9]'
+                  )}
+                >
+                  {activeScene}
+                </motion.span>
+              </AnimatePresence>
+            </div>
           </h1>
-          <p className="mt-4 text-balance text-base text-muted-foreground sm:text-lg">
+          <p className="mt-5 text-balance text-base text-muted-foreground sm:text-lg">
             {t('description')}
           </p>
 
           <div className="mt-9 flex flex-col gap-4">
             <Button
               size="lg"
-              className="cursor-pointer bg-[#6655ff] px-7 text-base font-semibold shadow-lg transition hover:bg-[#5647e1]"
+              className="cursor-pointer rounded-xl bg-gradient-to-r from-[#f97316] via-[#f97316] to-[#fb923c] px-8 text-base font-semibold uppercase tracking-wide text-white shadow-[0_10px_25px_-12px_rgba(249,115,22,0.8)] transition hover:brightness-105"
               disabled={mustSpin}
               onClick={handleSpin}
             >

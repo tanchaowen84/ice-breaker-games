@@ -599,12 +599,21 @@
     "title": "MkSaaS",
     "description": "Make AI SaaS in days, simply and effortlessly",
     "hero": {
-      "title": "Break the ice in under a minute.",
-      "description": "Grab a quick ice breaker game and keep the room moving.",
+      "intro": "Instant, crowd-ready",
+      "core": "ice breaker games for",
+      "scenes": [
+        "meetings",
+        "adults",
+        "work",
+        "team building",
+        "teens",
+        "kids"
+      ],
+      "description": "Elevate in-room and remote energy with quick-launch ice breaker games you can trust. Tap once for a ready-to-run pick, then explore dozens more on our site.",
       "cta": "Give me a quick opener",
-      "hint": "Click the wheel or use the button to get a random ice breaker game.",
+      "hint": "Tap the wheel or use the button—no prep, no signup.",
       "spinning": "Finding the next ice breaker...",
-      "resultHeading": "Try this next",
+      "resultHeading": "Today's ice breaker game",
       "tap": "Tap the wheel to spin again"
     },
     "logocloud": {
