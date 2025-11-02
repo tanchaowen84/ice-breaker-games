@@ -36,14 +36,14 @@ export default function QuestionBankSection() {
             >
               <div className="flex items-center gap-3">
                 <h3 className="text-base font-semibold text-slate-900">
-                  {t(`categories.${key}.label`)}
+                  {t(`categories.${key}.label` as any)}
                 </h3>
                 <Badge variant="secondary" className="bg-indigo-50 text-indigo-600">
                   Soon
                 </Badge>
               </div>
               <p className="text-sm text-slate-600">
-                {t(`categories.${key}.helper`)}
+                {t(`categories.${key}.helper` as any)}
               </p>
             </article>
           ))}

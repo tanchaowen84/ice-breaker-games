@@ -36,14 +36,14 @@ export default function SceneHubSection() {
             >
               <div className="flex items-center gap-3">
                 <h3 className="text-base font-semibold text-slate-900">
-                  {t(`scenes.${key}.label`)}
+                  {t(`scenes.${key}.label` as any)}
                 </h3>
                 <Badge variant="secondary" className="bg-slate-100 text-slate-600">
                   Soon
                 </Badge>
               </div>
               <p className="text-sm text-slate-600">
-                {t(`scenes.${key}.helper`)}
+                {t(`scenes.${key}.helper` as any)}
               </p>
             </article>
           ))}
