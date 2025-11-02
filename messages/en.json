@@ -627,44 +627,35 @@
     "sceneHub": {
       "eyebrow": "Browse by scene",
       "title": "Explorer: ice breaker games for every scene",
-      "description": "Scan the scenes your crew asks for most—meetings, team building, adults, teens, kids, quick hits, large groups, fun-first, and hybrid sessions. Each tile will grow into a dedicated guide linking to the best ice breaker games for that setting.",
+      "description": "Scan the scenes your crew asks for most—meetings, adults, kids, teens, team building, and large groups. Each accordion will grow into a dedicated hub linking to the ice breaker games that fit that setting.",
       "scenes": {
-        "work": {
-          "label": "Work",
-          "helper": "Reliable ice breakers for teams"
-        },
         "meetings": {
-          "label": "Meetings",
+          "label": "Ice breaker games for meetings",
           "helper": "Agenda-friendly ideas for facilitators"
         },
         "adults": {
-          "label": "Adults",
+          "label": "Ice breaker games for adults",
           "helper": "Relaxed & social gatherings"
         },
-        "teens": {
-          "label": "Teens",
-          "helper": "High-energy classroom & camp games"
-        },
         "kids": {
-          "label": "Kids",
+          "label": "Ice breaker games for kids",
           "helper": "Easy-to-run kid-friendly choices"
         },
+        "teens": {
+          "label": "Ice breaker games for teens",
+          "helper": "High-energy classroom & camp games"
+        },
+        "teamBuilding": {
+          "label": "Team building ice breaker games",
+          "helper": "Trust-building activities for work"
+        },
         "largeGroups": {
-          "label": "Large groups",
+          "label": "Ice breaker games for large groups",
           "helper": "Scales to 30+ participants"
         },
-        "quick": {
-          "label": "Quick (5–10 minutes)",
-          "helper": "Short and lively energizers"
-        },
-        "fun": {
-          "label": "Fun picks",
-          "helper": "Laugh-first crowd pleasers"
-        }
+        "cta": "View the upcoming scene hub"
       },
-      "footnote": "Scene deep dives will open gradually—tell us which ice breaker game collections you want prioritized, and we’ll link the finished hubs right here.",
-      "imageAlt": "Selection board showing ice breaker scenes",
-      "imageBadge": "Scene lab"
+      "footnote": "Scene deep dives will open gradually—tell us which ice breaker game collections you want prioritized, and we’ll link the finished hubs right here."
     },
     "questionBank": {
       "eyebrow": "Icebreaker questions",
