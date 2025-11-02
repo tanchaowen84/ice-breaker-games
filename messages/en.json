@@ -631,27 +631,27 @@
       "scenes": {
         "meetings": {
           "label": "Ice breaker games for meetings",
-          "helper": "Agenda-friendly ideas for facilitators"
+          "helper": "Use these quick openers to loosen up weekly syncs, retros, and workshops without derailing the agenda."
         },
         "adults": {
           "label": "Ice breaker games for adults",
-          "helper": "Relaxed & social gatherings"
+          "helper": "Conversation-led games built for professional workshops, retreats, and social mixers."
         },
         "kids": {
           "label": "Ice breaker games for kids",
-          "helper": "Easy-to-run kid-friendly choices"
+          "helper": "Movement-friendly games that need little prep and keep younger groups focused."
         },
         "teens": {
           "label": "Ice breaker games for teens",
-          "helper": "High-energy classroom & camp games"
+          "helper": "High-energy, slightly competitive ideas for classrooms, youth groups, and camps."
         },
         "teamBuilding": {
           "label": "Team building ice breaker games",
-          "helper": "Trust-building activities for work"
+          "helper": "Structured activities that build trust and jump-start deeper collaboration."
         },
         "largeGroups": {
           "label": "Ice breaker games for large groups",
-          "helper": "Scales to 30+ participants"
+          "helper": "Scalable formats that keep 30+ participants engaged without chaos."
         },
         "cta": "View the upcoming scene hub"
       },
@@ -664,27 +664,27 @@
       "categories": {
         "work": {
           "label": "Ice breaker questions for work",
-          "helper": "Openers for all-hands, onboarding, and weekly syncs"
+          "helper": "Professional yet playful prompts for all-hands, onboarding cohorts, and weekly syncs."
         },
         "adults": {
           "label": "Ice breaker questions for adults",
-          "helper": "Conversation starters for workshops and socials"
+          "helper": "Thoughtful conversation starters for workshops, volunteer events, and socials."
         },
         "teamMeetings": {
           "label": "Ice breaker questions for team meetings",
-          "helper": "Quick prompts to warm up project or leadership huddles"
+          "helper": "Quick prompts that reset energy before project huddles or leadership reviews."
         },
         "teens": {
           "label": "Ice breaker questions for teens",
-          "helper": "High-energy prompts for classrooms, youth groups, and camps"
+          "helper": "Energetic cues tailored to classrooms, youth groups, and camp cabins."
         },
         "dating": {
           "label": "Ice breaker questions for dating",
-          "helper": "Light, curious questions for mixers and ice breaker dates"
+          "helper": "Light, curious questions to spark stories at mixers or first-date events."
         },
         "smallGroups": {
           "label": "Ice breaker questions for small groups",
-          "helper": "Intimate prompts ideal for cohorts of four to eight"
+          "helper": "Intimate prompts ideal for book clubs, masterminds, and cohorts of four to eight."
         },
         "cta": "Preview the upcoming question hub"
       },
