@@ -1,208 +1,169 @@
 'use client';
 
-import { Ripple } from '@/components/magicui/ripple';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useCurrentUser } from '@/hooks/use-current-user';
 import { cn } from '@/lib/utils';
-import { Send } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useCallback, useMemo, useState } from 'react';
-import { toast } from 'sonner';
+import { Wheel } from 'react-custom-roulette';
+
+const wheelData = [
+  { option: 'Two Truths and a Lie' },
+  { option: 'Speed Connections' },
+  { option: 'Emoji Introductions' },
+  { option: 'Show & Tell Snapshot' },
+  { option: 'Common Ground Sprint' },
+  { option: 'Would You Rather?' },
+  { option: 'Story Dice Remix' },
+  { option: 'Lightning Trivia' },
+  { option: 'Rapid Fire Questions' },
+  { option: 'Human Bingo' },
+  { option: 'Hot Seat' },
+  { option: 'Team Charades' },
+  { option: 'Pass the Mic' },
+  { option: 'Speed Networking' },
+  { option: 'Memory Match' },
+];
+
+const wheelBackgroundColors = [
+  '#f87171',
+  '#facc15',
+  '#60a5fa',
+  '#34d399',
+  '#c084fc',
+  '#f87171',
+  '#facc15',
+  '#60a5fa',
+  '#34d399',
+  '#c084fc',
+  '#f87171',
+  '#facc15',
+  '#60a5fa',
+  '#34d399',
+  '#c084fc',
+];
+
+const wheelTextColors = ['#0b1220'];
 
 export default function HeroSection() {
   const t = useTranslations('HomePage.hero');
-  const router = useRouter();
-  const currentUser = useCurrentUser();
+  const [mustSpin, setMustSpin] = useState(false);
+  const [prizeNumber, setPrizeNumber] = useState(0);
+  const [selectedGame, setSelectedGame] = useState<string | null>(null);
 
-  // State for the input
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
+  const handleSpin = useCallback(() => {
+    if (mustSpin) return;
 
-  // 使用useCallback稳定函数引用
-  const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInput(e.target.value);
-    },
-    []
-  );
+    const nextPrize = Math.floor(Math.random() * wheelData.length);
+    setPrizeNumber(nextPrize);
+    setMustSpin(true);
+  }, [mustSpin]);
 
-  const handleFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
+  const handleStop = useCallback(() => {
+    setMustSpin(false);
+    setSelectedGame(wheelData[prizeNumber]?.option ?? null);
+  }, [prizeNumber]);
 
-  const handleBlur = useCallback(() => {
-    setIsFocused(false);
-  }, []);
-
-  // 使用useMemo缓存className计算结果
-  const inputClassName = useMemo(() => {
-    return cn(
-      // 基础样式
-      'w-full h-16 text-lg px-6 pr-16 rounded-2xl border-2',
-      'transition-all duration-300 ease-in-out',
-      // 聚焦状态
-      isFocused && 'border-primary shadow-lg shadow-primary/20 scale-[1.02]',
-      !isFocused && 'border-border hover:border-primary/50',
-      // 加载状态
-      isLoading && 'opacity-50 cursor-not-allowed'
-    );
-  }, [isFocused, isLoading]);
-
-  const buttonClassName = useMemo(() => {
-    return cn(
-      // 基础样式
-      'absolute right-2 top-1/2 -translate-y-1/2',
-      'h-12 w-12 rounded-full',
-      'transition-all duration-300 ease-in-out',
-      // 状态样式
-      input.trim() && !isLoading
-        ? 'bg-primary hover:bg-primary/90 scale-100'
-        : 'bg-muted-foreground/20 scale-90'
-    );
-  }, [input, isLoading]);
-
-  const iconClassName = useMemo(() => {
-    return cn(
-      'h-5 w-5 transition-transform duration-300',
-      isLoading ? 'animate-pulse' : 'group-hover:translate-x-0.5'
-    );
-  }, [isLoading]);
-
-  const handleSubmit = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
-
-      if (!input.trim()) {
-        toast.error('Please enter a description for your flowchart');
-        return;
-      }
-
-      if (input.trim().length < 5) {
-        toast.error('Please provide a more detailed description');
-        return;
-      }
-
-      setIsLoading(true);
-
-      try {
-        if (currentUser) {
-          // Logged in user - pre-create flowchart
-          const response = await fetch('/api/flowcharts', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({}), // Empty body for pre-creation
-          });
-
-          if (!response.ok) {
-            throw new Error('Failed to create flowchart');
-          }
-
-          const data = await response.json();
-
-          // Store the input for auto-generation
-          localStorage.setItem('flowchart_auto_input', input.trim());
-          localStorage.setItem('flowchart_auto_generate', 'true');
-
-          router.push(`/canvas/${data.id}`);
-        } else {
-          // Guest user - go to canvas directly
-          localStorage.setItem('flowchart_auto_input', input.trim());
-          localStorage.setItem('flowchart_auto_generate', 'true');
-
-          router.push('/canvas');
-        }
-      } catch (error) {
-        console.error('Error creating flowchart:', error);
-        toast.error('Failed to create new flowchart');
-        setIsLoading(false);
-      }
-    },
-    [input, currentUser, router]
-  );
+  const spinHint = useMemo(() => {
+    return mustSpin ? t('spinning') : t('hint');
+  }, [mustSpin, t]);
 
   return (
-    <>
-      <main id="hero" className="overflow-hidden">
-        {/* background, light shadows on top of the hero section */}
-        <div
-          aria-hidden
-          className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block"
-        >
-          <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-          <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-          <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/60 py-24 sm:py-28"
+    >
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-14 px-6 lg:flex-row lg:items-stretch lg:gap-20">
+        <div className="flex w-full max-w-xl flex-col items-start text-left">
+          <h1 className="text-balance text-4xl font-bricolage-grotesque leading-tight tracking-tight text-foreground sm:text-5xl">
+            {t('title')}
+          </h1>
+          <p className="mt-4 text-balance text-base text-muted-foreground sm:text-lg">
+            {t('description')}
+          </p>
+
+          <div className="mt-9 flex flex-col gap-4">
+            <Button
+              size="lg"
+              className="cursor-pointer bg-[#6655ff] px-7 text-base font-semibold shadow-lg transition hover:bg-[#5647e1]"
+              disabled={mustSpin}
+              onClick={handleSpin}
+            >
+              {t('cta')}
+            </Button>
+
+            <p className="text-sm text-muted-foreground">{spinHint}</p>
+
+            {selectedGame && (
+              <div className="rounded-2xl border border-dashed border-[#5647e1]/30 bg-white/90 p-4 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#5647e1]">
+                  {t('resultHeading')}
+                </p>
+                <p className="mt-1 text-lg font-semibold text-slate-900">
+                  {selectedGame}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
-        <section>
-          <div className="relative pt-12">
-            <div className="mx-auto max-w-7xl px-6">
-              <Ripple />
-
-              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                {/* title */}
-                <h1 className="mt-8 text-balance text-5xl font-bricolage-grotesque lg:mt-16 xl:text-[5rem]">
-                  {t('title')}
-                </h1>
-
-                {/* description */}
-                <p className="mx-auto mt-8 max-w-4xl text-balance text-lg text-muted-foreground">
-                  {t('description')}
-                </p>
-
-                {/* input form */}
-                <div className="mt-12 flex flex-col items-center justify-center gap-6">
-                  <form onSubmit={handleSubmit} className="w-full max-w-4xl">
-                    <div className="relative group">
-                      <Input
-                        value={input}
-                        onChange={handleInputChange}
-                        onFocus={handleFocus}
-                        onBlur={handleBlur}
-                        placeholder="Describe the flowchart you want to create..."
-                        className={inputClassName}
-                        disabled={isLoading}
-                      />
-                      <Button
-                        type="submit"
-                        size="icon"
-                        disabled={isLoading || !input.trim()}
-                        className={buttonClassName}
-                      >
-                        <Send className={iconClassName} />
-                      </Button>
-                    </div>
-                  </form>
-                </div>
+        <div className="relative flex w-full max-w-md flex-col items-center justify-center">
+          <div
+            role="button"
+            tabIndex={0}
+            aria-label={t('hint')}
+            className={cn(
+              'relative flex size-[320px] items-center justify-center rounded-full border border-[#10204b]/20 bg-white/80 p-6 shadow-xl transition-transform duration-200 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5647e1]',
+              mustSpin && 'pointer-events-none opacity-80'
+            )}
+            onClick={handleSpin}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                handleSpin();
+              }
+            }}
+          >
+            <Wheel
+              data={wheelData}
+              mustStartSpinning={mustSpin}
+              prizeNumber={prizeNumber}
+              onStopSpinning={handleStop}
+              backgroundColors={wheelBackgroundColors}
+              textColors={wheelTextColors}
+              radiusLineWidth={1.5}
+              radiusLineColor="#0f172a"
+              outerBorderWidth={6}
+              outerBorderColor="#10204b"
+              innerBorderColor="#ffffff"
+              innerBorderWidth={0}
+              innerRadius={18}
+              fontSize={12}
+              fontWeight={600}
+              perpendicularText={false}
+              textDistance={58}
+              spinDuration={0.7}
+            />
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#182556] shadow-[0_12px_30px_-12px_rgba(16,32,75,0.65)] ring-4 ring-white/40">
+                <Star
+                  className="h-8 w-8 text-[#facc15]"
+                  stroke="transparent"
+                  fill="#facc15"
+                />
               </div>
             </div>
-
-            {/* images */}
-            <div>
-              <div className="relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
-                <div
-                  aria-hidden
-                  className="bg-linear-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
-                />
-                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
-                  <Image
-                    className="z-2 border-border/25 relative rounded-2xl border"
-                    src="https://cdn.flowchartai.org/static/blocks/demo.png"
-                    alt="FlowChart AI Demo"
-                    width={2796}
-                    height={2008}
-                  />
-                </div>
+            <div className="pointer-events-none absolute inset-0 flex items-start justify-center">
+              <div className="relative -top-7 flex flex-col items-center">
+                <div className="h-10 w-10 rounded-full bg-[#f97316] shadow-lg" />
+                <div className="-mt-1 h-6 w-3 rounded-b-full bg-[#f97316]" />
               </div>
             </div>
           </div>
-        </section>
-      </main>
-    </>
+
+          <span className="mt-4 text-sm text-muted-foreground">{t('tap')}</span>
+        </div>
+      </div>
+    </section>
   );
 }
