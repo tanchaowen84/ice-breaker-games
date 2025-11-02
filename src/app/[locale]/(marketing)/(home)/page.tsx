@@ -2,7 +2,6 @@ import HeroSection from '@/components/blocks/hero/hero';
 import { QuestionBankSection } from '@/components/blocks/question-bank';
 import { QuickStartSection } from '@/components/blocks/quick-start';
 import { SceneHubSection } from '@/components/blocks/scene-hub';
-import { ToolbeltSection } from '@/components/blocks/toolbelt';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -42,7 +41,6 @@ export default async function HomePage(props: HomePageProps) {
         <QuickStartSection />
         <SceneHubSection />
         <QuestionBankSection />
-        <ToolbeltSection />
       </div>
     </>
   );

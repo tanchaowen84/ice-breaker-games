@@ -2,8 +2,6 @@ import { Badge } from '@/components/ui/badge';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-const COLLECTION_KEYS = ['fiveMinutes', 'noMaterials', 'remoteFriendly'];
-
 export default function QuickStartSection() {
   const t = useTranslations('HomePage.quickStart');
 
@@ -20,28 +18,14 @@ export default function QuickStartSection() {
           <p className="text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
             {t('description')}
           </p>
-
-          <ul className="space-y-4">
-            {COLLECTION_KEYS.map((key) => (
-              <li key={key} className="flex flex-col gap-1 rounded-xl border border-dashed border-slate-200/70 bg-white/90 p-4 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <span className="text-base font-semibold text-slate-900">
-                    {t(`collections.${key}.title`)}
-                  </span>
-                  <Badge variant="secondary" className="bg-slate-100 text-slate-600">
-                    Soon
-                  </Badge>
-                </div>
-                <p className="text-sm leading-relaxed text-slate-600">
-                  {t(`collections.${key}.description`)}
-                </p>
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-sm text-slate-500">
-            {t('footnote')}
-          </p>
+          <div className="flex items-center gap-3 rounded-xl border border-dashed border-slate-200/70 bg-white/90 px-4 py-3 shadow-sm">
+            <Badge variant="secondary" className="bg-slate-100 text-slate-600">
+              Soon
+            </Badge>
+            <p className="text-sm text-slate-600">
+              {t('soonNote')}
+            </p>
+          </div>
         </div>
 
         <div className="order-1 lg:order-2">

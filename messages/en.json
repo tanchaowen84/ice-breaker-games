@@ -619,22 +619,8 @@
     "quickStart": {
       "eyebrow": "Quick-start collections",
       "title": "Grab a ready-to-run set in seconds",
-      "description": "Short on time? These curated mini collections bundle games that match your clock, materials, and audience—each launching with zero prep.",
-      "collections": {
-        "fiveMinutes": {
-          "title": "5-minute starters",
-          "description": "Kick off meetings or standups with lightning warm-ups that reset the room fast."
-        },
-        "noMaterials": {
-          "title": "No-material picks",
-          "description": "Keep things simple with talk-only games that thrive without props or slides."
-        },
-        "remoteFriendly": {
-          "title": "Remote-friendly",
-          "description": "Get distributed teams laughing and chatting with breakout- and chat-ready ideas."
-        }
-      },
-      "footnote": "We’re actively scripting each collection—bookmark these to get notified when they launch.",
+      "description": "Short on time? Our launch collections will package games by duration, materials, and group vibe. We’re polishing the first sets now.",
+      "soonNote": "Collections are in production—save this page to be first in line when they open.",
       "imageAlt": "Preview of featured ice breaker collections",
       "imageBadge": "Pilot set"
     },
@@ -653,78 +639,32 @@
         },
         "adults": {
           "label": "Adults",
-          "helper": "Workshops, networking, community groups"
+          "helper": "Relaxed & social"
         },
         "teens": {
           "label": "Teens",
-          "helper": "Youth groups, camps, classrooms"
+          "helper": "High engagement"
         },
         "kids": {
           "label": "Kids",
-          "helper": "Elementary classes, clubs, birthday crews"
+          "helper": "Easy to run"
         },
         "largeGroups": {
           "label": "Large groups",
-          "helper": "50+ participants, auditorium energy"
+          "helper": "Scales to 30+"
         },
         "quick": {
-          "label": "Quick (5–10 min)",
-          "helper": "Short energizers and lightning rounds"
+          "label": "Quick (5–10 minutes)",
+          "helper": "Short and lively"
         },
         "fun": {
           "label": "Fun picks",
-          "helper": "High-energy, laughs-first openers"
+          "helper": "Just for laughs"
         }
       },
       "footnote": "Scene deep dives will open gradually—tap the ones you need most and we’ll prioritize them.",
       "imageAlt": "Selection board showing ice breaker scenes",
       "imageBadge": "Scene lab"
-    },
-    "questionBank": {
-      "eyebrow": "Question bank",
-      "title": "Swap talk tracks on the fly",
-      "description": "Build momentum with prompts tuned for every mood—from playful to thoughtful to business-ready. The full bank is coming online shortly.",
-      "moods": {
-        "funny": "Funny",
-        "deep": "Deep",
-        "work": "For work",
-        "teens": "For teens",
-        "kids": "For kids",
-        "meetings": "Meetings"
-      },
-      "highlight": {
-        "title": "Question spinner",
-        "description": "Shuffle through curated prompts when silence hits or energy dips.",
-        "cta": "Spin a question (soon)"
-      },
-      "imageAlt": "Cards showing ice breaker question prompts",
-      "imageBadge": "Prompt lab"
-    },
-    "toolbelt": {
-      "eyebrow": "Facilitator toolbelt",
-      "title": "Utilities that keep sessions flowing",
-      "description": "We’re prototyping lightweight utilities that plug straight into your sessions—think timers, randomizers, and ice breaker aids you can launch in under five seconds.",
-      "ideas": {
-        "timer": {
-          "title": "Session timers",
-          "description": "Visual countdowns with upbeat wrap cues and overtime padding."
-        },
-        "splitter": {
-          "title": "Group splitters",
-          "description": "Balanced breakout assignments that respect team size and roles."
-        },
-        "picker": {
-          "title": "Name & topic pickers",
-          "description": "Fair, drama-free randomizers for the next speaker or prompt."
-        },
-        "spinner": {
-          "title": "Prompt spinner",
-          "description": "Drop-in questions, dares, and energizers that refill automatically."
-        }
-      },
-      "footnote": "Want early access? We’ll invite facilitators to test-drive the toolbelt before public launch.",
-      "imageAlt": "Interface mockup of facilitator tools",
-      "imageBadge": "Toolbelt"
     },
     "logocloud": {
       "title": "Your favorite companies are our partners"
