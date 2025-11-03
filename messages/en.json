@@ -593,7 +593,8 @@
     "description": "Make AI SaaS in days, simply and effortlessly",
     "hero": {
       "intro": "Instant, crowd-ready",
-      "core": "ice breaker games for",
+      "core": "ice breaker games",
+      "for": "for",
       "scenes": [
         "meetings",
         "adults",

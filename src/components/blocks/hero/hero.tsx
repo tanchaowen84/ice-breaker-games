@@ -84,31 +84,36 @@ export default function HeroSection() {
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-14 px-6 lg:flex-row lg:items-stretch lg:gap-20">
         <div className="flex w-full max-w-xl flex-col items-start text-left">
-          <h1 className="flex flex-wrap items-baseline gap-x-2 gap-y-3 text-4xl font-bricolage-grotesque font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
-            <span>{t('intro')}</span>
-            <span>{sceneCore}</span>
-            <div className="relative inline-flex">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={`${sceneIndex}-${activeScene}`}
-                  initial={{ opacity: 0, y: '40%' }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: '-40%' }}
-                  transition={{ duration: 0.35, ease: 'easeInOut' }}
-                  className={cn(
-                    'inline-flex rounded-lg px-3 py-1 text-4xl font-semibold sm:text-5xl',
-                    sceneIndex % 5 === 0 && 'bg-[#fde68a] text-[#b45309]',
-                    sceneIndex % 5 === 1 && 'bg-[#fee2e2] text-[#b91c1c]',
-                    sceneIndex % 5 === 2 && 'bg-[#e0f2fe] text-[#0369a1]',
-                    sceneIndex % 5 === 3 && 'bg-[#dcfce7] text-[#15803d]',
-                    sceneIndex % 5 === 4 && 'bg-[#ede9fe] text-[#6d28d9]'
-                  )}
-                >
-                  {activeScene}
-                </motion.span>
-              </AnimatePresence>
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-3 text-4xl font-bricolage-grotesque font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+            <h1>
+              {t('intro')}{' '}
+              <span className="inline-block">{sceneCore}</span>
+            </h1>
+            <div className="flex items-baseline gap-x-2">
+              <span>{t('for')}</span>
+              <div className="relative inline-flex">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={`${sceneIndex}-${activeScene}`}
+                    initial={{ opacity: 0, y: '40%' }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: '-40%' }}
+                    transition={{ duration: 0.35, ease: 'easeInOut' }}
+                    className={cn(
+                      'inline-flex rounded-lg px-3 py-1 text-4xl font-semibold sm:text-5xl',
+                      sceneIndex % 5 === 0 && 'bg-[#fde68a] text-[#b45309]',
+                      sceneIndex % 5 === 1 && 'bg-[#fee2e2] text-[#b91c1c]',
+                      sceneIndex % 5 === 2 && 'bg-[#e0f2fe] text-[#0369a1]',
+                      sceneIndex % 5 === 3 && 'bg-[#dcfce7] text-[#15803d]',
+                      sceneIndex % 5 === 4 && 'bg-[#ede9fe] text-[#6d28d9]'
+                    )}
+                  >
+                    {activeScene}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
             </div>
-          </h1>
+          </div>
           <p className="mt-5 text-balance text-base text-muted-foreground sm:text-lg">
             {t('description')}
           </p>
