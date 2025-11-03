@@ -631,27 +631,45 @@
       "scenes": {
         "meetings": {
           "label": "Ice breaker games for meetings",
-          "helper": "Great meeting icebreakers are quick, focused, and align with your agenda. They reset the room's energy without causing delays. For example, try a 'One-Word Check-in' to gauge the mood, or 'Rose, Bud, Thorn' to briefly share a success, a new idea, and a challenge."
+          "helper": {
+            "description": "Great meeting icebreakers are quick, focused, and align with your agenda. They reset the room's energy without causing delays.",
+            "examples": "Try a 'One-Word Check-in' to gauge the mood, or 'Rose, Bud, Thorn' to briefly share a success, a new idea, and a challenge."
+          }
         },
         "adults": {
           "label": "Ice breaker games for adults",
-          "helper": "Icebreakers for adults should spark genuine conversation and connection in a low-pressure way. They work best when they're simple to explain and easy to join. For instance, 'Two Truths and a Lie' is a classic for a reason, while a 'Desert Island Scenario' (e.g., 'what three items would you bring?') reveals personality and priorities."
+          "helper": {
+            "description": "Icebreakers for adults should spark genuine conversation and connection in a low-pressure way. They work best when they're simple to explain and easy to join.",
+            "examples": "For instance, 'Two Truths and a Lie' is a classic for a reason, while a 'Desert Island Scenario' (e.g., 'what three items would you bring?') reveals personality and priorities."
+          }
         },
         "kids": {
           "label": "Ice breaker games for kids",
-          "helper": "The best icebreakers for kids are active, simple, and tap into their natural creativity. They need clear rules and minimal downtime to keep everyone engaged. Try a classic game of 'Simon Says' to get them moving, or 'Animal Charades' to encourage silly, imaginative fun."
+          "helper": {
+            "description": "The best icebreakers for kids are active, simple, and tap into their natural creativity. They need clear rules and minimal downtime to keep everyone engaged.",
+            "examples": "Try a classic game of 'Simon Says' to get them moving, or 'Animal Charades' to encourage silly, imaginative fun."
+          }
         },
         "teens": {
           "label": "Ice breaker games for teens",
-          "helper": "Teen icebreakers work well when they're high-energy, a little competitive, and connect to their interests. They should encourage interaction without feeling forced. A round of 'Would You Rather' with funny or thought-provoking questions always works, while the 'Human Knot' challenge is great for collaborative problem-solving."
+          "helper": {
+            "description": "Teen icebreakers work well when they're high-energy, a little competitive, and connect to their interests. They should encourage interaction without feeling forced.",
+            "examples": "A round of 'Would You Rather' with funny or thought-provoking questions always works, while the 'Human Knot' challenge is great for collaborative problem-solving."
+          }
         },
         "teamBuilding": {
           "label": "Team building ice breaker games",
-          "helper": "Effective team-building icebreakers are designed to improve communication, trust, and collaboration in a structured way. They go beyond simple introductions to solve a shared problem. For example, 'Two-Sided Story' helps teams see different perspectives, while 'Minefield' is a fun, trust-building exercise in communication."
+          "helper": {
+            "description": "Effective team-building icebreakers are designed to improve communication, trust, and collaboration in a structured way. They go beyond simple introductions to solve a shared problem.",
+            "examples": "For example, 'Two-Sided Story' helps teams see different perspectives, while 'Minefield' is a fun, trust-building exercise in communication."
+          }
         },
         "largeGroups": {
           "label": "Ice breaker games for large groups",
-          "helper": "Icebreakers for large groups must be simple to explain and easy to scale, ensuring everyone can participate without confusion. The goal is to create shared energy, not chaos. Try 'Human Bingo' to encourage mingling, or 'Group Juggle' with soft objects to create a memorable, collaborative experience."
+          "helper": {
+            "description": "Icebreakers for large groups must be simple to explain and easy to scale, ensuring everyone can participate without confusion. The goal is to create shared energy, not chaos.",
+            "examples": "Try 'Human Bingo' to encourage mingling, or 'Group Juggle' with soft objects to create a memorable, collaborative experience."
+          }
         },
         "cta": "View the upcoming scene hub"
       },
@@ -664,27 +682,45 @@
       "categories": {
         "work": {
           "label": "Ice breaker questions for work",
-          "helper": "Work-appropriate questions should be engaging but professional, helping colleagues connect on a personal level without getting too intrusive. For example, you could ask, 'What's a skill you'd like to learn this year?' or 'What was your very first job?'"
+          "helper": {
+            "description": "Work-appropriate questions should be engaging but professional, helping colleagues connect on a personal level without getting too intrusive.",
+            "examples": "For example, you could ask, 'What's a skill you'd like to learn this year?' or 'What was your very first job?'"
+          }
         },
         "adults": {
           "label": "Ice breaker questions for adults",
-          "helper": "Questions for adults can be a bit more reflective, designed to spark interesting stories and perspectives in a relaxed setting. Try asking, 'What's a small thing that brought you joy this week?' or a fun hypothetical like, 'If you could have any superpower, what would it be and why?'"
+          "helper": {
+            "description": "Questions for adults can be a bit more reflective, designed to spark interesting stories and perspectives in a relaxed setting.",
+            "examples": "Try asking, 'What's a small thing that brought you joy this week?' or a fun hypothetical like, 'If you could have any superpower, what would it be and why?'"
+          }
         },
         "teamMeetings": {
           "label": "Ice breaker questions for team meetings",
-          "helper": "For team meetings, the best questions are quick, positive, and help everyone get into a collaborative mindset. They should be easy to answer in under a minute. For instance, start with, 'What's one thing you're excited to work on today?' or 'Share a recent win, big or small.'"
+          "helper": {
+            "description": "For team meetings, the best questions are quick, positive, and help everyone get into a collaborative mindset. They should be easy to answer in under a minute.",
+            "examples": "For instance, start with, 'What's one thing you're excited to work on today?' or 'Share a recent win, big or small.'"
+          }
         },
         "teens": {
           "label": "Ice breaker questions for teens",
-          "helper": "Questions for teens often work well when they tap into pop culture, social trends, and fun hypotheticals. Keep them light and easy to answer. For example, ask 'If you could only use one app for the rest of your life, what would it be?' or 'What's a song you have on repeat right now?'"
+          "helper": {
+            "description": "Questions for teens often work well when they tap into pop culture, social trends, and fun hypotheticals. Keep them light and easy to answer.",
+            "examples": "For example, ask 'If you could only use one app for the rest of your life, what would it be?' or 'What's a song you have on repeat right now?'"
+          }
         },
         "dating": {
           "label": "Ice breaker questions for dating",
-          "helper": "Good dating icebreaker questions are open-ended, inviting stories rather than just 'yes' or 'no' answers. They help reveal personality and passions. Try asking, 'What's something you're genuinely passionate about?' or 'What's the best adventure you've ever been on?'"
+          "helper": {
+            "description": "Good dating icebreaker questions are open-ended, inviting stories rather than just 'yes' or 'no' answers. They help reveal personality and passions.",
+            "examples": "Try asking, 'What's something you're genuinely passionate about?' or 'What's the best adventure you've ever been on?'"
+          }
         },
         "smallGroups": {
           "label": "Ice breaker questions for small groups",
-          "helper": "In a small group, you can go a little deeper to build stronger connections. These questions should feel thoughtful but not overly invasive. For example, ask 'What's a book or movie that has really stuck with you?' or 'What is something you're looking forward to right now?'"
+          "helper": {
+            "description": "In a small group, you can go a little deeper to build stronger connections. These questions should feel thoughtful but not overly invasive.",
+            "examples": "For example, ask 'What's a book or movie that has really stuck with you?' or 'What is something you're looking forward to right now?'"
+          }
         },
         "cta": "Preview the upcoming question hub"
       },

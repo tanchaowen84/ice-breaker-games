@@ -42,9 +42,13 @@ export default function SceneHubSection() {
                   Soon
                 </Badge>
               </div>
-              <p className="text-sm text-slate-600">
-                {t(`scenes.${key}.helper` as any)}
-              </p>
+              <div className="text-sm text-slate-600">
+                <p>{t(`scenes.${key}.helper.description` as any)}</p>
+                <p className="mt-2 text-slate-500">
+                  <span className="font-semibold text-slate-600">e.g.</span>{' '}
+                  {t(`scenes.${key}.helper.examples` as any)}
+                </p>
+              </div>
             </article>
           ))}
         </div>

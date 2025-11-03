@@ -42,9 +42,13 @@ export default function QuestionBankSection() {
                   Soon
                 </Badge>
               </div>
-              <p className="text-sm text-slate-600">
-                {t(`categories.${key}.helper` as any)}
-              </p>
+              <div className="text-sm text-slate-600">
+                <p>{t(`categories.${key}.helper.description` as any)}</p>
+                <p className="mt-2 text-slate-500">
+                  <span className="font-semibold text-slate-600">e.g.</span>{' '}
+                  {t(`categories.${key}.helper.examples` as any)}
+                </p>
+              </div>
             </article>
           ))}
         </div>
