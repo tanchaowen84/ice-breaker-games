@@ -344,28 +344,22 @@
       }
     },
     "footer": {
-      "tagline": "Create beautiful flowcharts with FlowChart AI - fast, intelligent, and effortless",
-      "product": {
-        "title": "Product",
+      "description": "A curated collection of fun, simple ice breaker games to make your meetings, workshops, and events more engaging.",
+      "games": {
+        "title": "Games",
         "items": {
-          "features": "Features",
-          "pricing": "Pricing",
-          "faq": "FAQ"
+          "quickOpeners": "Quick Openers",
+          "byCategory": "Browse by Category",
+          "questionBank": "Question Bank",
+          "gameSpinner": "Game Spinner"
         }
       },
       "resources": {
         "title": "Resources",
         "items": {
           "blog": "Blog",
-          "docs": "Documentation",
-          "changelog": "Changelog"
-        }
-      },
-      "company": {
-        "title": "Company",
-        "items": {
-          "about": "About",
-          "contact": "Contact"
+          "whatIsAnIcebreaker": "What is an Icebreaker?",
+          "facilitatorTips": "Facilitator Tips"
         }
       },
       "legal": {

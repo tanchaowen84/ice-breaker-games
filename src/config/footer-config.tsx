@@ -20,21 +20,26 @@ export function getFooterLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: t('product.title'),
+      title: t('games.title'),
       items: [
         {
-          title: t('product.items.features'),
-          href: Routes.Features,
+          title: t('games.items.quickOpeners'),
+          href: '#quick-start',
           external: false,
         },
         {
-          title: t('product.items.pricing'),
-          href: Routes.Pricing,
+          title: t('games.items.byCategory'),
+          href: '#scene-hub',
           external: false,
         },
         {
-          title: t('product.items.faq'),
-          href: Routes.FAQ,
+          title: t('games.items.questionBank'),
+          href: '#questions',
+          external: false,
+        },
+        {
+          title: t('games.items.gameSpinner'),
+          href: '#hero',
           external: false,
         },
       ],
@@ -45,35 +50,6 @@ export function getFooterLinks(): NestedMenuItem[] {
         {
           title: t('resources.items.blog'),
           href: Routes.Blog,
-          external: false,
-        },
-        ...(websiteConfig.features.enableDocsPage
-          ? [
-              {
-                title: t('resources.items.docs'),
-                href: Routes.Docs,
-                external: false,
-              },
-            ]
-          : []),
-        {
-          title: t('resources.items.changelog'),
-          href: Routes.Changelog,
-          external: false,
-        },
-      ],
-    },
-    {
-      title: t('company.title'),
-      items: [
-        {
-          title: t('company.items.about'),
-          href: Routes.About,
-          external: false,
-        },
-        {
-          title: t('company.items.contact'),
-          href: Routes.Contact,
           external: false,
         },
       ],
