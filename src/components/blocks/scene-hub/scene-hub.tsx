@@ -44,9 +44,26 @@ export default function SceneHubSection() {
               </div>
               <div className="text-sm text-slate-600">
                 <p>{t(`scenes.${key}.helper.description` as any)}</p>
-                <p className="mt-2 text-slate-500">
-                  <span className="font-semibold text-slate-600">e.g.</span>{' '}
-                  {t(`scenes.${key}.helper.examples` as any)}
+                <p className="mt-2 pl-4 italic text-slate-500">
+                  <span className="not-italic font-semibold text-slate-600">
+                    e.g.
+                  </span>{
+                    ' '
+                  }
+                  {t(`scenes.${key}.helper.examples` as any)
+                    .split("'")
+                    .map((part: any, index: any) =>
+                      index % 2 === 1 ? (
+                        <strong
+                          key={index}
+                          className="font-semibold not-italic text-slate-700"
+                        >
+                          '{part}'
+                        </strong>
+                      ) : (
+                        <span key={index}>{part}</span>
+                      )
+                    )}
                 </p>
               </div>
             </article>
