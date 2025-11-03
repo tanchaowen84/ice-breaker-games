@@ -635,7 +635,7 @@
     "sceneHub": {
       "eyebrow": "Browse by scene",
       "title": "Explorer: ice breaker games for every scene",
-      "description": "Scan the scenes your crew asks for most—meetings, adults, kids, teens, team building, and large groups. Each accordion will grow into a dedicated hub linking to the ice breaker games that fit that setting.",
+      "description": "The right game depends on the group. To help you choose quickly, we've sorted our ice breaker games by the scenes where you'll need them most. Whether you're leading a corporate team-building session or just breaking the ice with a new group of teens, you'll find proven ideas for every context right here.",
       "scenes": {
         "meetings": {
           "label": "Ice breaker games for meetings",
@@ -686,7 +686,7 @@
     "questionBank": {
       "eyebrow": "Ice breaker questions",
       "title": "Ice breaker questions ready to drop into any agenda",
-      "description": "Queue up playful, thoughtful, or work-safe prompts in seconds. We’re building category hubs so you can jump straight to ice breaker questions for work, adults, team meetings, teens, dating, and small groups.",
+      "description": "A great question can make all the difference. Here you'll find hundreds of ice breaker questions, ready to be dropped into any agenda. To make it easy, we've sorted them into popular categories—from work-safe prompts to fun questions for teens—so you can find the perfect conversation starter in seconds.",
       "categories": {
         "work": {
           "label": "Ice breaker questions for work",
