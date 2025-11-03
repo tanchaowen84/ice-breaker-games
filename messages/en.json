@@ -631,27 +631,27 @@
       "scenes": {
         "meetings": {
           "label": "Ice breaker games for meetings",
-          "helper": "Use these quick openers to loosen up weekly syncs, retros, and workshops without derailing the agenda."
+          "helper": "Great meeting icebreakers are quick, focused, and align with your agenda. They reset the room's energy without causing delays. For example, try a 'One-Word Check-in' to gauge the mood, or 'Rose, Bud, Thorn' to briefly share a success, a new idea, and a challenge."
         },
         "adults": {
           "label": "Ice breaker games for adults",
-          "helper": "Conversation-led games built for professional workshops, retreats, and social mixers."
+          "helper": "Icebreakers for adults should spark genuine conversation and connection in a low-pressure way. They work best when they're simple to explain and easy to join. For instance, 'Two Truths and a Lie' is a classic for a reason, while a 'Desert Island Scenario' (e.g., 'what three items would you bring?') reveals personality and priorities."
         },
         "kids": {
           "label": "Ice breaker games for kids",
-          "helper": "Movement-friendly games that need little prep and keep younger groups focused."
+          "helper": "The best icebreakers for kids are active, simple, and tap into their natural creativity. They need clear rules and minimal downtime to keep everyone engaged. Try a classic game of 'Simon Says' to get them moving, or 'Animal Charades' to encourage silly, imaginative fun."
         },
         "teens": {
           "label": "Ice breaker games for teens",
-          "helper": "High-energy, slightly competitive ideas for classrooms, youth groups, and camps."
+          "helper": "Teen icebreakers work well when they're high-energy, a little competitive, and connect to their interests. They should encourage interaction without feeling forced. A round of 'Would You Rather' with funny or thought-provoking questions always works, while the 'Human Knot' challenge is great for collaborative problem-solving."
         },
         "teamBuilding": {
           "label": "Team building ice breaker games",
-          "helper": "Structured activities that build trust and jump-start deeper collaboration."
+          "helper": "Effective team-building icebreakers are designed to improve communication, trust, and collaboration in a structured way. They go beyond simple introductions to solve a shared problem. For example, 'Two-Sided Story' helps teams see different perspectives, while 'Minefield' is a fun, trust-building exercise in communication."
         },
         "largeGroups": {
           "label": "Ice breaker games for large groups",
-          "helper": "Scalable formats that keep 30+ participants engaged without chaos."
+          "helper": "Icebreakers for large groups must be simple to explain and easy to scale, ensuring everyone can participate without confusion. The goal is to create shared energy, not chaos. Try 'Human Bingo' to encourage mingling, or 'Group Juggle' with soft objects to create a memorable, collaborative experience."
         },
         "cta": "View the upcoming scene hub"
       },
@@ -664,27 +664,27 @@
       "categories": {
         "work": {
           "label": "Ice breaker questions for work",
-          "helper": "Professional yet playful prompts for all-hands, onboarding cohorts, and weekly syncs."
+          "helper": "Work-appropriate questions should be engaging but professional, helping colleagues connect on a personal level without getting too intrusive. For example, you could ask, 'What's a skill you'd like to learn this year?' or 'What was your very first job?'"
         },
         "adults": {
           "label": "Ice breaker questions for adults",
-          "helper": "Thoughtful conversation starters for workshops, volunteer events, and socials."
+          "helper": "Questions for adults can be a bit more reflective, designed to spark interesting stories and perspectives in a relaxed setting. Try asking, 'What's a small thing that brought you joy this week?' or a fun hypothetical like, 'If you could have any superpower, what would it be and why?'"
         },
         "teamMeetings": {
           "label": "Ice breaker questions for team meetings",
-          "helper": "Quick prompts that reset energy before project huddles or leadership reviews."
+          "helper": "For team meetings, the best questions are quick, positive, and help everyone get into a collaborative mindset. They should be easy to answer in under a minute. For instance, start with, 'What's one thing you're excited to work on today?' or 'Share a recent win, big or small.'"
         },
         "teens": {
           "label": "Ice breaker questions for teens",
-          "helper": "Energetic cues tailored to classrooms, youth groups, and camp cabins."
+          "helper": "Questions for teens often work well when they tap into pop culture, social trends, and fun hypotheticals. Keep them light and easy to answer. For example, ask 'If you could only use one app for the rest of your life, what would it be?' or 'What's a song you have on repeat right now?'"
         },
         "dating": {
           "label": "Ice breaker questions for dating",
-          "helper": "Light, curious questions to spark stories at mixers or first-date events."
+          "helper": "Good dating icebreaker questions are open-ended, inviting stories rather than just 'yes' or 'no' answers. They help reveal personality and passions. Try asking, 'What's something you're genuinely passionate about?' or 'What's the best adventure you've ever been on?'"
         },
         "smallGroups": {
           "label": "Ice breaker questions for small groups",
-          "helper": "Intimate prompts ideal for book clubs, masterminds, and cohorts of four to eight."
+          "helper": "In a small group, you can go a little deeper to build stronger connections. These questions should feel thoughtful but not overly invasive. For example, ask 'What's a book or movie that has really stuck with you?' or 'What is something you're looking forward to right now?'"
         },
         "cta": "Preview the upcoming question hub"
       },
