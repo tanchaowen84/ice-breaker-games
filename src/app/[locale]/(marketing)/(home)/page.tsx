@@ -2,6 +2,7 @@ import HeroSection from '@/components/blocks/hero/hero';
 import { QuickStartSection } from '@/components/blocks/quick-start';
 import { SceneHubSection } from '@/components/blocks/scene-hub';
 import FaqSection from '@/components/blocks/faqs/faqs';
+import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import { QuestionBankSection } from '@/components/blocks/question-bank';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
@@ -43,6 +44,7 @@ export default async function HomePage(props: HomePageProps) {
         <SceneHubSection />
         <QuestionBankSection />
         <FaqSection />
+        <CallToActionSection />
       </div>
     </>
   );
