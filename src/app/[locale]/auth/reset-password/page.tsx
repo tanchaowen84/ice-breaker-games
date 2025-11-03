@@ -1,3 +1,7 @@
+import { notFound } from 'next/navigation';
+
+// TODO: 恢复重置密码页时，删除注释并移除 notFound 调用。
+/*
 import { ResetPasswordForm } from '@/components/auth/reset-password-form';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
@@ -27,4 +31,9 @@ export async function generateMetadata({
 
 export default async function ResetPasswordPage() {
   return <ResetPasswordForm />;
+}
+*/
+
+export default function ResetPasswordPage() {
+  notFound();
 }

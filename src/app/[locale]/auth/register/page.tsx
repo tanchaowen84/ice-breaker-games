@@ -1,3 +1,7 @@
+import { notFound } from 'next/navigation';
+
+// TODO: 需要恢复注册页时，删除注释并移除 notFound 调用。
+/*
 import { RegisterForm } from '@/components/auth/register-form';
 import { LocaleLink } from '@/i18n/navigation';
 import { constructMetadata } from '@/lib/metadata';
@@ -48,4 +52,9 @@ export default async function RegisterPage() {
       </div>
     </div>
   );
+}
+*/
+
+export default function RegisterPage() {
+  notFound();
 }

@@ -123,10 +123,7 @@ export function NavbarMobile({
           <RemoveScroll allowPinchZoom enabled>
             {/* Only render MainMobileMenu when not in loading state */}
             {!isPending && (
-              <MainMobileMenu
-                userLoggedIn={!!currentUser}
-                onLinkClicked={handleToggleMobileMenu}
-              />
+              <MainMobileMenu onLinkClicked={handleToggleMobileMenu} />
             )}
           </RemoveScroll>
         </Portal>
@@ -136,11 +133,10 @@ export function NavbarMobile({
 }
 
 interface MainMobileMenuProps {
-  userLoggedIn: boolean;
   onLinkClicked: () => void;
 }
 
-function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
+function MainMobileMenu({ onLinkClicked }: MainMobileMenuProps) {
   const [expanded, setExpanded] = React.useState<Record<string, boolean>>({});
   const t = useTranslations();
   const menuLinks = getNavbarLinks();
@@ -152,38 +148,6 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
       bg-background backdrop-blur-md animate-in fade-in-0"
     >
       <div className="size-full flex flex-col items-start space-y-4">
-        {/* action buttons */}
-        {userLoggedIn ? null : (
-          <div className="w-full flex flex-col gap-4 px-4">
-            <LocaleLink
-              href={Routes.Login}
-              onClick={onLinkClicked}
-              className={cn(
-                buttonVariants({
-                  variant: 'outline',
-                  size: 'lg',
-                }),
-                'w-full'
-              )}
-            >
-              {t('Common.login')}
-            </LocaleLink>
-            <LocaleLink
-              href={Routes.Register}
-              className={cn(
-                buttonVariants({
-                  variant: 'default',
-                  size: 'lg',
-                }),
-                'w-full'
-              )}
-              onClick={onLinkClicked}
-            >
-              {t('Common.signUp')}
-            </LocaleLink>
-          </div>
-        )}
-
         {/* main menu */}
         <ul className="w-full px-4">
           {menuLinks?.map((item) => {

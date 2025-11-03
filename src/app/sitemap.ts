@@ -20,8 +20,6 @@ function getEnabledStaticRoutes(): string[] {
     '/privacy',
     '/terms',
     '/cookie',
-    '/auth/login',
-    '/auth/register',
   ];
 
   // 条件性添加页面路由

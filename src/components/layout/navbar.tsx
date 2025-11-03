@@ -1,13 +1,10 @@
 'use client';
 
-import { LoginWrapper } from '@/components/auth/login-wrapper';
 import Container from '@/components/layout/container';
 import { Logo } from '@/components/layout/logo';
 import { ModeSwitcher } from '@/components/layout/mode-switcher';
 import { NavbarMobile } from '@/components/layout/navbar-mobile';
 import { UserButton } from '@/components/layout/user-button';
-import { Button } from '@/components/ui/button';
-import { buttonVariants } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,7 +19,6 @@ import { useScroll } from '@/hooks/use-scroll';
 import { LocaleLink, useLocalePathname } from '@/i18n/navigation';
 import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
-import { Routes } from '@/routes';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -223,31 +219,7 @@ export function Navbar({ scroll }: NavBarProps) {
               <Skeleton className="size-8 border rounded-full" />
             ) : currentUser ? (
               <UserButton user={currentUser} />
-            ) : (
-              <div className="flex items-center gap-x-4">
-                <LoginWrapper mode="modal" asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="cursor-pointer"
-                  >
-                    {t('Common.login')}
-                  </Button>
-                </LoginWrapper>
-
-                <LocaleLink
-                  href={Routes.Register}
-                  className={cn(
-                    buttonVariants({
-                      variant: 'default',
-                      size: 'sm',
-                    })
-                  )}
-                >
-                  {t('Common.signUp')}
-                </LocaleLink>
-              </div>
-            )}
+            ) : null}
 
             <ModeSwitcher />
             <LocaleSwitcher />

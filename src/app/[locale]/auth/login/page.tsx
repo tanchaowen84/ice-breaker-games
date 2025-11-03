@@ -1,3 +1,7 @@
+import { notFound } from 'next/navigation';
+
+// TODO: 将登录页重新启用时，删除本段注释并移除 notFound 调用。
+/*
 import { LoginForm } from '@/components/auth/login-form';
 import { LocaleLink } from '@/i18n/navigation';
 import { constructMetadata } from '@/lib/metadata';
@@ -48,4 +52,9 @@ export default async function LoginPage() {
       </div>
     </div>
   );
+}
+*/
+
+export default function LoginPage() {
+  notFound();
 }
