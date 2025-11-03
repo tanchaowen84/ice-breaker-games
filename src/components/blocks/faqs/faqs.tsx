@@ -78,8 +78,29 @@ export default function FaqSection() {
     },
   ];
 
+  const generateFaqSchema = () => {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => {
+        return {
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        };
+      }),
+    };
+  };
+
   return (
     <section id="faqs" className="px-4 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqSchema()) }}
+      />
       <div className="mx-auto max-w-4xl">
         <HeaderSection
           title={t('title')}

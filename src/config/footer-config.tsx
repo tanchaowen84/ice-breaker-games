@@ -37,11 +37,6 @@ export function getFooterLinks(): NestedMenuItem[] {
           href: '#questions',
           external: false,
         },
-        {
-          title: t('games.items.gameSpinner'),
-          href: '#hero',
-          external: false,
-        },
       ],
     },
     {

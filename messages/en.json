@@ -348,10 +348,9 @@
       "games": {
         "title": "Games",
         "items": {
-          "quickOpeners": "Quick Openers",
-          "byCategory": "Browse by Category",
-          "questionBank": "Question Bank",
-          "gameSpinner": "Game Spinner"
+          "quickOpeners": "Quick Picks",
+          "byCategory": "Browse by Scene",
+          "questionBank": "Ice Breaker Questions"
         }
       },
       "resources": {
