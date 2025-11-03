@@ -204,19 +204,7 @@ export function SpinningWheel({
         </div>
       </div>
 
-      <div className="mt-4 text-center">
-        <p className="text-sm text-muted-foreground">{spinHint}</p>
-        {selectedGame && (
-          <div className="mt-4 rounded-2xl border border-dashed border-[#5647e1]/30 bg-white/90 p-4 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#5647e1]">
-              Today's ice breaker game
-            </p>
-            <p className="mt-1 text-lg font-semibold text-slate-900">
-              {selectedGame}
-            </p>
-          </div>
-        )}
-      </div>
+      <p className="mt-4 text-sm text-muted-foreground text-center">{spinHint}</p>
     </div>
   );
 }
