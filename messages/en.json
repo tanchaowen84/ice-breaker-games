@@ -622,7 +622,21 @@
       "description": "Give standups, orientations, and last-minute meetings a jump-start with bite-size ice breaker games that need zero prep. We’re finalizing playlists for 5-minute warmups, no-material prompts, and remote-first teams.",
       "soonNote": "Collections are in production—bookmark this space to get first access as soon as they ship.",
       "imageAlt": "Preview of featured ice breaker collections",
-      "imageBadge": "Pilot set"
+      "imageBadge": "Pilot set",
+      "quickGames": {
+        "game1": {
+          "title": "Two Truths and a Lie",
+          "description": "A classic get-to-know-you game. Each person shares three 'facts' about themselves—two true, one false. The group then guesses which one is the lie."
+        },
+        "game2": {
+          "title": "One-Word Check-in",
+          "description": "Perfect for the start of a meeting. Ask everyone to describe their current mood or state of mind in a single word. It's fast, simple, and surprisingly insightful."
+        },
+        "game3": {
+          "title": "Would You Rather",
+          "description": "Spark fun debates with hypothetical questions. Pose a 'Would you rather...' question (e.g., '...fly or be invisible?') and let everyone share their choice and reasoning."
+        }
+      }
     },
     "sceneHub": {
       "eyebrow": "Browse by scene",
