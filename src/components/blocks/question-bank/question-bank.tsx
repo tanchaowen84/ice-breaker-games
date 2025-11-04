@@ -47,23 +47,32 @@ export default function QuestionBankSection() {
                 <p className="mt-2 pl-4 italic text-slate-500">
                   <span className="not-italic font-semibold text-slate-600">
                     e.g.
-                  </span>{
-                    ' '
-                  }
-                  {t(`categories.${key}.helper.examples` as any)
-                    .split("'")
-                    .map((part: any, index: any) =>
-                      index % 2 === 1 ? (
-                        <strong
-                          key={index}
-                          className="font-semibold not-italic text-slate-700"
-                        >
-                          '{part}'
-                        </strong>
-                      ) : (
-                        <span key={index}>{part}</span>
-                      )
-                    )}
+                  </span>{' '}
+                  {(() => {
+                    const text = t(`categories.${key}.helper.examples` as any);
+                    // 使用正则表达式匹配引号内的内容（包括单引号和双引号）
+                    const parts = text.split(/(['"]).*?\1/);
+                    const matches = text.match(/(['"]).*?\1/g) || [];
+
+                    const elements: JSX.Element[] = [];
+                    parts.forEach((part, index) => {
+                      // 添加普通文本部分
+                      if (part) {
+                        elements.push(<span key={`text-${index}`}>{part}</span>);
+                      }
+                      // 添加匹配的引号内容（加粗显示）
+                      if (matches[index]) {
+                        const quoteContent = matches[index].slice(1, -1); // 去掉引号
+                        elements.push(
+                          <strong key={`quote-${index}`} className="font-semibold not-italic text-slate-700">
+                            {matches[index][0]}{quoteContent}{matches[index][0]}
+                          </strong>
+                        );
+                      }
+                    });
+
+                    return elements;
+                  })()}
                 </p>
               </div>
             </article>

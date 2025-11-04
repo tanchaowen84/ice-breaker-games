@@ -24,16 +24,13 @@ export default function QuickStartSection() {
           <div className="order-1 lg:order-2">
             <div className="relative mx-auto max-w-xl overflow-hidden rounded-3xl border border-slate-100 bg-white/60 p-6 shadow-lg ring-1 ring-slate-100">
               <Image
-                src="/blocks/exercice.png"
+                src="https://cdn.icebreakergame.net/blocks/quicksection.webp"
                 alt={t('imageAlt')}
                 width={1024}
                 height={768}
                 className="w-full rounded-2xl object-cover"
                 priority
               />
-              <div className="absolute left-6 top-6 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600 shadow-sm">
-                {t('imageBadge')}
-              </div>
             </div>
           </div>
         </div>
