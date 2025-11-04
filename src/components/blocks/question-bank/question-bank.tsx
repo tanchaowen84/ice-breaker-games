@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { useTranslations } from 'next-intl';
+import type React from 'react';
 
 const CATEGORY_KEYS = [
   'work',
@@ -38,7 +39,10 @@ export default function QuestionBankSection() {
                 <h3 className="text-base font-semibold text-slate-900">
                   {t(`categories.${key}.label` as any)}
                 </h3>
-                <Badge variant="secondary" className="bg-indigo-50 text-indigo-600">
+                <Badge
+                  variant="secondary"
+                  className="bg-indigo-50 text-indigo-600"
+                >
                   Soon
                 </Badge>
               </div>
@@ -54,18 +58,25 @@ export default function QuestionBankSection() {
                     const parts = text.split(/(['"]).*?\1/);
                     const matches = text.match(/(['"]).*?\1/g) || [];
 
-                    const elements: JSX.Element[] = [];
+                    const elements: React.JSX.Element[] = [];
                     parts.forEach((part, index) => {
                       // 添加普通文本部分
                       if (part) {
-                        elements.push(<span key={`text-${index}`}>{part}</span>);
+                        elements.push(
+                          <span key={`text-${index}`}>{part}</span>
+                        );
                       }
                       // 添加匹配的引号内容（加粗显示）
                       if (matches[index]) {
                         const quoteContent = matches[index].slice(1, -1); // 去掉引号
                         elements.push(
-                          <strong key={`quote-${index}`} className="font-semibold not-italic text-slate-700">
-                            {matches[index][0]}{quoteContent}{matches[index][0]}
+                          <strong
+                            key={`quote-${index}`}
+                            className="font-semibold not-italic text-slate-700"
+                          >
+                            {matches[index][0]}
+                            {quoteContent}
+                            {matches[index][0]}
                           </strong>
                         );
                       }
@@ -78,7 +89,6 @@ export default function QuestionBankSection() {
             </article>
           ))}
         </div>
-
       </div>
     </section>
   );
