@@ -85,17 +85,25 @@ interface TreeProps {
 }
 
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
-  return tree?.items?.length && level < 3 ? (
-    <ul className={cn('m-0 list-none', { 'pl-4': level !== 1 })}>
+  if (!tree?.items?.length || level > 2) {
+    return null;
+  }
+
+  return (
+    <ul
+      className={cn('m-0 list-none space-y-1.5', {
+        'ml-2 border-l border-border/40 pl-3': level !== 1,
+      })}
+    >
       {tree.items.map((item, index) => {
         return (
-          <li key={index} className={cn('mt-0 pt-1')}>
+          <li key={index} className="mt-0">
             <a
               href={item.url}
               className={cn(
-                'inline-block text-sm no-underline hover:text-primary line-clamp-1',
+                'block rounded-md px-2 py-1 text-sm leading-relaxed no-underline transition-colors hover:bg-muted hover:text-foreground',
                 item.url === `#${activeItem}`
-                  ? 'font-medium text-primary'
+                  ? 'bg-muted font-medium text-foreground shadow-sm'
                   : 'text-muted-foreground'
               )}
             >
@@ -108,5 +116,5 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
         );
       })}
     </ul>
-  ) : null;
+  );
 }

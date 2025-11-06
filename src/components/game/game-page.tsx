@@ -82,7 +82,7 @@ export async function GamePage({ game, labels }: GamePageProps) {
           </div>
         </header>
 
-        <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="flex flex-col gap-10">
             <GameMetaCard
               duration={game.duration}
