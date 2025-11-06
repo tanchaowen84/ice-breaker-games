@@ -50,6 +50,8 @@ const games = defineCollection({
     participants: z.string().optional(),
     materials: z.array(z.string()).optional(),
     difficulty: z.enum(['easy', 'medium', 'advanced']).optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
   }),
   transform: async (data, context) => {
     const transformedData = await transformMDX(data, context);
@@ -71,6 +73,8 @@ const games = defineCollection({
       locale,
       slug,
       slugAsParams,
+      image: data.image,
+      imageAlt: data.imageAlt,
       estimatedTime,
       body: transformedData.body,
       toc: transformedData.toc,

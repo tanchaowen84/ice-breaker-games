@@ -8,7 +8,9 @@ import { LocaleLink } from '@/i18n/navigation';
 import { formatDate } from '@/lib/formatter';
 import { getTableOfContents } from '@/lib/blog/toc';
 import type { Game } from 'content-collections';
-import { ArrowLeftIcon, CalendarIcon, Clock3Icon, ListTreeIcon } from 'lucide-react';
+import { ArrowLeftIcon, CalendarIcon, Clock3Icon, ImageOffIcon, ListTreeIcon } from 'lucide-react';
+import Image from 'next/image';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants';
 
 interface GamePageProps {
   game: Game;
@@ -24,6 +26,7 @@ interface GamePageProps {
     noMaterials: string;
     difficulty: string;
     tableOfContents: string;
+    noCover: string;
   };
 }
 
@@ -45,6 +48,28 @@ export async function GamePage({ game, labels }: GamePageProps) {
           </LocaleLink>
 
           <div className="space-y-4">
+            {game.image ? (
+              <div className="relative aspect-16/9 w-full overflow-hidden rounded-2xl">
+                <Image
+                  src={game.image}
+                  alt={game.imageAlt || game.title || 'Game cover'}
+                  fill
+                  sizes="(min-width: 1024px) 640px, 100vw"
+                  className="object-cover"
+                  priority
+                  placeholder="blur"
+                  blurDataURL={PLACEHOLDER_IMAGE}
+                />
+              </div>
+            ) : (
+              <div className="flex aspect-16/9 w-full items-center justify-center rounded-2xl border border-dashed border-muted-foreground/40 bg-muted/30 text-sm text-muted-foreground">
+                <div className="flex flex-col items-center gap-2">
+                  <ImageOffIcon className="size-6" />
+                  <span>{labels.noCover ?? 'Cover image coming soon'}</span>
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-wrap gap-2">
               {Array.isArray(game.scenes) && game.scenes.length > 0 && (
                 <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-muted-foreground">
@@ -82,7 +107,7 @@ export async function GamePage({ game, labels }: GamePageProps) {
           </div>
         </header>
 
-        <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="flex flex-col gap-10">
             <GameMetaCard
               duration={game.duration}

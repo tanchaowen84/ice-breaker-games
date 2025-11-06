@@ -76,6 +76,7 @@ export default async function GameDetailPage({
         materials: t('materials'),
         noMaterials: t('noMaterials'),
         difficulty: t('difficulty'),
+        noCover: t('noCover'),
         tableOfContents: t('tableOfContents'),
       }}
     />

@@ -98,6 +98,7 @@ src/components/game/
 - `CustomPage`：可拆解其中的 header 逻辑以便为游戏定制化界面。
 - `BlogGrid`/`BlogCard`：可作为游戏列表样式参考或直接继承并改字段。
 - `BlogToc`：若游戏正文较长，可复用目录组件。
+- `GameCard`/`GamePage`：支持封面图渲染（frontmatter `image`/`imageAlt`），并在缺图时显示占位元素。
 
 ---
 

@@ -1123,7 +1123,8 @@
     "materials": "Materials",
     "noMaterials": "No special materials required",
     "difficulty": "Difficulty",
-    "tableOfContents": "Table of Contents"
+    "tableOfContents": "Table of Contents",
+    "noCover": "Cover image coming soon"
   },
   "GamesIndex": {
     "title": "Icebreaker games library",

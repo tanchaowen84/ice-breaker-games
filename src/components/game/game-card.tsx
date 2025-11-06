@@ -3,7 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LocaleLink } from '@/i18n/navigation';
 import { formatDate } from '@/lib/formatter';
 import type { Game } from 'content-collections';
-import { CalendarIcon, ClockIcon, UsersIcon } from 'lucide-react';
+import { CalendarIcon, ClockIcon, ImageOffIcon, UsersIcon } from 'lucide-react';
+import Image from 'next/image';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants';
 import { getSceneBadgeClass } from './scene-badge';
 
 interface GameCardProps {
@@ -15,8 +17,26 @@ export function GameCard({ game }: GameCardProps) {
 
   return (
     <LocaleLink href={`/games/${game.slugAsParams}`} className="block h-full">
-      <Card className="h-full transition hover:-translate-y-1 hover:shadow-lg">
-        <CardHeader className="space-y-3">
+      <Card className="flex h-full flex-col overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+        <div className="relative aspect-16/9 w-full flex-shrink-0 bg-muted">
+          {game.image ? (
+            <Image
+              src={game.image}
+              alt={game.imageAlt || game.title || 'Game cover'}
+              fill
+              sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+              placeholder="blur"
+              blurDataURL={PLACEHOLDER_IMAGE}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-muted-foreground">
+              <ImageOffIcon className="size-6" />
+            </div>
+          )}
+        </div>
+
+        <CardHeader className="space-y-3 p-6">
           <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-muted-foreground">
             {Array.isArray(game.scenes) && game.scenes.length > 0 ? (
               <div className="flex flex-wrap gap-2">
@@ -42,7 +62,7 @@ export function GameCard({ game }: GameCardProps) {
             {game.description}
           </p>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3 text-sm text-muted-foreground">
+        <CardContent className="flex flex-col gap-3 px-6 pb-6 pt-0 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <CalendarIcon className="size-4" />
             <span>{publishDate}</span>
