@@ -6,3 +6,14 @@
 @import "fumadocs-ui/css/preset.css";
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
+
+.prose strong,
+.prose b {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.dark .prose strong,
+.dark .prose b {
+  color: var(--color-primary-foreground, var(--foreground));
+}
