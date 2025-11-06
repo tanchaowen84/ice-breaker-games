@@ -25,7 +25,7 @@ export default function GameGridWithPagination({
 
   return (
     <div className="space-y-10">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6">
         {games.map((game) => (
           <GameCard key={game.slugAsParams} game={game} />
         ))}
