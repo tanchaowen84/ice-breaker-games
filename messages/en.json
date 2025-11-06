@@ -1112,6 +1112,25 @@
       "secondaryButton": "Get a Quick Opener"
     }
   },
+  "GamePage": {
+    "backToList": "All games",
+    "publishedOn": "Published",
+    "readTime": "{minutes} min read",
+    "scenes": "Scenes",
+    "quickFacts": "Quick facts",
+    "duration": "Duration",
+    "participants": "Participants",
+    "materials": "Materials",
+    "noMaterials": "No special materials required",
+    "difficulty": "Difficulty",
+    "tableOfContents": "Table of Contents"
+  },
+  "GamesIndex": {
+    "title": "Icebreaker games library",
+    "description": "Browse ready-to-run activities for meetings, classrooms, and social get-togethers.",
+    "empty": "No games published yet. Check back soon!",
+    "featured": "Featured"
+  },
   "AITextPage": {
     "title": "AI Text",
     "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",

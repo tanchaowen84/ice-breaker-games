@@ -36,6 +36,48 @@ const metas = defineCollection({
   schema: createMetaSchema,
 });
 
+const games = defineCollection({
+  name: 'game',
+  directory: 'content/games',
+  include: '**/*.mdx',
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+    date: z.string().datetime(),
+    published: z.boolean().default(true),
+    scenes: z.array(z.string()).optional(),
+    duration: z.string().optional(),
+    participants: z.string().optional(),
+    materials: z.array(z.string()).optional(),
+    difficulty: z.enum(['easy', 'medium', 'advanced']).optional(),
+  }),
+  transform: async (data, context) => {
+    const transformedData = await transformMDX(data, context);
+
+    const filePath = data._meta.path;
+    const fileName = filePath.split(path.sep).pop() || '';
+
+    const { locale, base } = extractLocaleAndBase(fileName);
+
+    const slug = `/games/${base}`;
+    const slugAsParams = base;
+
+    const wordCount = data.content.split(/\s+/).length;
+    const wordsPerMinute = 200;
+    const estimatedTime = Math.max(Math.ceil(wordCount / wordsPerMinute), 1);
+
+    return {
+      ...data,
+      locale,
+      slug,
+      slugAsParams,
+      estimatedTime,
+      body: transformedData.body,
+      toc: transformedData.toc,
+    };
+  },
+});
+
 /**
  * Blog Author collection
  *
@@ -324,5 +366,14 @@ function extractLocaleAndBase(fileName: string): {
 }
 
 export default defineConfig({
-  collections: [docs, metas, authors, categories, posts, pages, releases],
+  collections: [
+    docs,
+    metas,
+    games,
+    authors,
+    categories,
+    posts,
+    pages,
+    releases,
+  ],
 });

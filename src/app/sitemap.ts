@@ -2,7 +2,7 @@ import { websiteConfig } from '@/config/website';
 import { getLocalePathname } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { source } from '@/lib/docs/source';
-import { allCategories, allPosts } from 'content-collections';
+import { allCategories, allGames, allPosts } from 'content-collections';
 import type { MetadataRoute } from 'next';
 import type { Locale } from 'next-intl';
 import { getBaseUrl } from '../lib/urls/urls';
@@ -20,6 +20,7 @@ function getEnabledStaticRoutes(): string[] {
     '/privacy',
     '/terms',
     '/cookie',
+    '/games',
   ];
 
   // 条件性添加页面路由
@@ -146,6 +147,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           changeFrequency: 'weekly' as const,
         }))
     )
+  );
+
+  sitemapList.push(
+    ...allGames
+      .filter((game) => game.published)
+      .flatMap((game) =>
+        routing.locales
+          .filter((locale) => game.locale === locale)
+          .map((locale) => ({
+            url: getUrl(`/games/${game.slugAsParams}`, locale),
+            lastModified: new Date(game.date),
+            priority: 0.7,
+            changeFrequency: 'monthly' as const,
+          }))
+      )
   );
 
   // 条件性添加docs页面
