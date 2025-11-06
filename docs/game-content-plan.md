@@ -74,10 +74,10 @@
     - 处理 404（`notFound()`）。
   - `dynamicParams = false`（可选）确保静态生成为主。
 
-### 5.2 列表页（可选）
-- 若需展示所有游戏：`src/app/[locale]/games/page.tsx`（简易）或分页路径 `games/page/[page]/page.tsx`。
-- 可复用博客分页组件思路：`getPaginatedBlogPosts` → `GameGridWithPagination`。
-- 后续再决定是否纳入 MVP。
+### 5.2 列表页
+- `/src/app/[locale]/games/page.tsx` 作为第一页，搭配 `GameGridWithPagination` 输出分页网格。
+- `/src/app/[locale]/games/page/[page]/page.tsx` 处理 2+ 页，逻辑复用博客的 `CustomPagination`。
+- 数据来源 `getPaginatedGames`（内部沿用 `websiteConfig.blog.paginationSize`），支持 locale fallback。
 
 ---
 

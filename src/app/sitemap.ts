@@ -99,6 +99,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   });
 
+  routing.locales.forEach((locale) => {
+    const gamesByLocale = allGames.filter(
+      (game) => game.locale === locale && game.published
+    );
+
+    const totalPages = Math.max(
+      1,
+      Math.ceil(gamesByLocale.length / websiteConfig.blog.paginationSize)
+    );
+
+    for (let page = 2; page <= totalPages; page++) {
+      sitemapList.push({
+        url: getUrl(`/games/page/${page}`, locale),
+        lastModified: new Date(),
+        priority: 0.7,
+        changeFrequency: 'monthly' as const,
+      });
+    }
+  });
+
   // add paginated category pages
   routing.locales.forEach((locale) => {
     const localeCategories = allCategories.filter(

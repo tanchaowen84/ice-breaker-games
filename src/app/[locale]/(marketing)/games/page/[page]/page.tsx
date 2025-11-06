@@ -8,39 +8,52 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-interface GamesIndexPageProps {
+interface GamesPaginationPageProps {
   params: Promise<{
     locale: Locale;
+    page: string;
   }>;
 }
 
 export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
+  const params: { locale: string; page: string }[] = [];
+
+  for (const locale of LOCALES) {
+    const { totalPages } = getPaginatedGames({ locale, page: 1 });
+
+    for (let page = 2; page <= totalPages; page++) {
+      params.push({ locale, page: String(page) });
+    }
+  }
+
+  return params;
 }
 
 export async function generateMetadata({
   params,
-}: GamesIndexPageProps): Promise<Metadata | undefined> {
-  const { locale } = await params;
+}: GamesPaginationPageProps): Promise<Metadata | undefined> {
+  const { locale, page } = await params;
   const t = await getTranslations({ locale, namespace: 'GamesIndex' });
   const meta = await getTranslations({ locale, namespace: 'Metadata' });
+  const canonicalPath = `/games/page/${page}`;
 
   return constructMetadata({
     title: `${t('title')} | ${meta('title')}`,
     description: t('description'),
-    canonicalUrl: getUrlWithLocale('/games', locale),
+    canonicalUrl: getUrlWithLocale(canonicalPath, locale),
   });
 }
 
-export default async function GamesIndexPage({
+export default async function GamesPaginationPage({
   params,
-}: GamesIndexPageProps) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'GamesIndex' });
+}: GamesPaginationPageProps) {
+  const { locale, page } = await params;
+  const currentPage = Number(page);
   const { paginatedGames, totalPages } = getPaginatedGames({
     locale,
-    page: 1,
+    page: currentPage,
   });
+  const t = await getTranslations({ locale, namespace: 'GamesIndex' });
 
   return (
     <Container className="py-16 px-4">

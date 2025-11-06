@@ -1128,8 +1128,7 @@
   "GamesIndex": {
     "title": "Icebreaker games library",
     "description": "Browse ready-to-run activities for meetings, classrooms, and social get-togethers.",
-    "empty": "No games published yet. Check back soon!",
-    "featured": "Featured"
+    "empty": "No games published yet. Check back soon!"
   },
   "AITextPage": {
     "title": "AI Text",
