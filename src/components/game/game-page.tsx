@@ -172,6 +172,18 @@ export async function GamePage({ game, labels, locale }: GamePageProps) {
             </aside>
           ) : null}
         </section>
+
+        <div className="rounded-2xl border border-dashed border-muted-foreground/30 bg-muted/20 p-6 text-center">
+          <p className="text-base text-muted-foreground">
+            Looking for more icebreaker activities?
+          </p>
+          <LocaleLink
+            href="/games"
+            className="mt-3 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+          >
+            Browse the full games library
+          </LocaleLink>
+        </div>
       </article>
     </Container>
   );

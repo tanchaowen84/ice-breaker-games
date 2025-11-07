@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/badge';
+import { LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
@@ -37,14 +38,17 @@ export default function QuickStartSection() {
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {/* Card 1 */}
-          <div className="rounded-xl border border-slate-200 bg-white/80 p-5 shadow-sm">
+          <LocaleLink
+            href="/games/two-truths-and-a-lie"
+            className="rounded-xl border border-slate-200 bg-white/80 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-300"
+          >
             <h3 className="font-bricolage-grotesque font-semibold text-slate-800">
               {t('quickGames.game1.title')}
             </h3>
             <p className="mt-1 text-sm text-slate-600">
               {t('quickGames.game1.description')}
             </p>
-          </div>
+          </LocaleLink>
           {/* Card 2 */}
           <div className="rounded-xl border border-slate-200 bg-white/80 p-5 shadow-sm">
             <h3 className="font-bricolage-grotesque font-semibold text-slate-800">
