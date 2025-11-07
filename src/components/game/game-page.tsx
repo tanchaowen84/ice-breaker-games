@@ -192,8 +192,6 @@ function buildGameJsonLd({ game, locale, pageUrl }: BuildSchemaParams) {
   const imageUrl = getImageUrl(game.image ?? '/og.png');
   const faqs = extractFaqEntries(game.content);
   const howToSteps = extractHowToSteps(game.content);
-  const videoUrl = extractYoutubeUrl(game.content);
-  const videoId = videoUrl ? extractYoutubeId(videoUrl) : null;
   const readTime = game.estimatedTime
     ? `PT${Math.max(1, Number(game.estimatedTime))}M`
     : undefined;
@@ -279,18 +277,6 @@ function buildGameJsonLd({ game, locale, pageUrl }: BuildSchemaParams) {
     });
   }
 
-  if (videoUrl && videoId) {
-    graph.push({
-      '@type': 'VideoObject',
-      name: `${game.title} Walkthrough`,
-      description: game.description,
-      embedUrl: videoUrl,
-      contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
-      thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-      publisher,
-    });
-  }
-
   if (faqs.length > 0) {
     graph.push({
       '@type': 'FAQPage',
@@ -309,17 +295,6 @@ function buildGameJsonLd({ game, locale, pageUrl }: BuildSchemaParams) {
     '@context': 'https://schema.org',
     '@graph': graph,
   };
-}
-
-function extractYoutubeUrl(content: string) {
-  if (!content) return undefined;
-  const match = content.match(/https:\/\/www\.youtube\.com\/embed\/[\w-]+[?\w=]*/);
-  return match ? match[0] : undefined;
-}
-
-function extractYoutubeId(url: string) {
-  const idMatch = url.match(/embed\/([\w-]+)/);
-  return idMatch ? idMatch[1] : undefined;
 }
 
 function extractFaqEntries(content: string) {

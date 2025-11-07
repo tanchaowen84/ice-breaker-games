@@ -44,7 +44,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${game.title} | ${t('title')}`,
+    title: game.title,
     description: game.description,
     canonicalUrl: getUrlWithLocale(game.slug, locale),
   });
