@@ -1,5 +1,6 @@
 import Container from '@/components/layout/container';
 import GameGridWithPagination from '@/components/game/game-grid-with-pagination';
+import { GameBreadcrumbs } from '@/components/game/game-breadcrumbs';
 import { LOCALES } from '@/i18n/routing';
 import { getPaginatedGames } from '@/lib/game/data';
 import { constructMetadata } from '@/lib/metadata';
@@ -41,6 +42,7 @@ export async function generateMetadata({
     title: `${t('title')} | ${meta('title')}`,
     description: t('description'),
     canonicalUrl: getUrlWithLocale(canonicalPath, locale),
+    noIndex: true,
   });
 }
 
@@ -54,10 +56,16 @@ export default async function GamesPaginationPage({
     page: currentPage,
   });
   const t = await getTranslations({ locale, namespace: 'GamesIndex' });
+  const commonT = await getTranslations({ locale, namespace: 'Common' });
 
   return (
     <Container className="py-16 px-4">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12">
+        <GameBreadcrumbs
+          homeLabel={commonT('home')}
+          gamesLabel={t('title')}
+        />
+
         <header className="space-y-4 text-center">
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
             {t('title')}

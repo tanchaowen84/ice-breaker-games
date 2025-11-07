@@ -61,11 +61,15 @@ export default async function GameDetailPage({
   }
 
   const t = await getTranslations({ locale, namespace: 'GamePage' });
+  const commonT = await getTranslations({ locale, namespace: 'Common' });
+  const gamesIndexT = await getTranslations({ locale, namespace: 'GamesIndex' });
 
   return (
     <GamePage
       game={game}
       labels={{
+        home: commonT('home'),
+        games: gamesIndexT('title'),
         backToList: t('backToList'),
         publishedOn: t('publishedOn'),
         readTime: (minutes) => t('readTime', { minutes }),

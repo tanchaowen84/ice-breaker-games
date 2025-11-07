@@ -99,6 +99,7 @@ src/components/game/
 - `BlogGrid`/`BlogCard`：可作为游戏列表样式参考或直接继承并改字段。
 - `BlogToc`：若游戏正文较长，可复用目录组件。
 - `GameCard`/`GamePage`：支持封面图渲染（frontmatter `image`/`imageAlt`），并在缺图时显示占位元素。
+- `GameBreadcrumbs`：复用 breadcrumb 组件统一输出 Home → Games → 详情。
 
 ---
 
@@ -112,7 +113,7 @@ src/components/game/
 ## 8. SEO & 结构化数据
 - `generateMetadata` 中设置标题、描述、OG 图（后续可允许 frontmatter 指定）。
 - 可加入 `structured data (JSON-LD)` 的扩展（如 `HowTo` schema），暂列为未来增强项。
-- 更新 `sitemap.ts`：在现有 `allPosts` 逻辑基础上增加 `allGames` 输出。
+- 更新 `sitemap.ts`：在现有 `allPosts` 逻辑基础上增加 `allGames` 输出；`/games` 列表/分页添加 `noindex`（但 `follow`）策略，单个游戏正常索引。
 
 ---
 

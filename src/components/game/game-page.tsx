@@ -1,5 +1,6 @@
 import Container from '@/components/layout/container';
 import { GameMetaCard } from '@/components/game/game-meta-card';
+import { GameBreadcrumbs } from '@/components/game/game-breadcrumbs';
 import { getSceneBadgeClass } from '@/components/game/scene-badge';
 import { BlogToc } from '@/components/blog/blog-toc';
 import { CustomMDXContent } from '@/components/shared/custom-mdx-content';
@@ -15,6 +16,8 @@ import { PLACEHOLDER_IMAGE } from '@/lib/constants';
 interface GamePageProps {
   game: Game;
   labels: {
+    home: string;
+    games: string;
     backToList: string;
     publishedOn: string;
     readTime: (minutes: number) => string;
@@ -38,6 +41,12 @@ export async function GamePage({ game, labels }: GamePageProps) {
   return (
     <Container className="py-16 px-4">
       <article className="mx-auto flex w-full max-w-4xl flex-col gap-12">
+        <GameBreadcrumbs
+          homeLabel={labels.home}
+          gamesLabel={labels.games}
+          currentLabel={game.title}
+        />
+
         <header className="space-y-6">
           <LocaleLink
             href="/games"
@@ -107,7 +116,7 @@ export async function GamePage({ game, labels }: GamePageProps) {
           </div>
         </header>
 
-      <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="flex flex-col gap-10">
             <GameMetaCard
               duration={game.duration}
