@@ -53,6 +53,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'cdn.icebreakergame.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'pub-2c5a2a3a6f2f46cb93a104e0208e08d1.r2.dev',
+      },
     ],
   },
 };
