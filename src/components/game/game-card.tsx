@@ -17,15 +17,17 @@ export function GameCard({ game }: GameCardProps) {
 
   return (
     <LocaleLink href={`/games/${game.slugAsParams}`} className="block h-full">
-      <Card className="flex h-full flex-col overflow-hidden transition hover:-translate-y-1 hover:shadow-lg md:flex-row">
-        <div className="relative h-52 w-full flex-shrink-0 bg-muted md:h-auto md:w-64 lg:w-72">
+      <Card className="group flex h-full flex-col overflow-hidden border border-border/60 bg-gradient-to-br from-background via-background to-muted/40 transition duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl md:flex-row">
+        <div
+          className="relative h-52 w-full flex-shrink-0 overflow-hidden rounded-2xl border border-border/40 bg-muted/80 shadow-[0_10px_30px_-20px_rgba(0,0,0,0.6)] transition duration-300 group-hover:border-primary/40 md:h-auto md:w-64 lg:w-72"
+        >
           {game.image ? (
             <Image
               src={game.image}
               alt={game.imageAlt || game.title || 'Game cover'}
               fill
               sizes="(min-width: 1024px) 320px, (min-width: 768px) 40vw, 100vw"
-              className="object-cover"
+              className="object-cover transition duration-500 ease-out group-hover:scale-105"
               placeholder="blur"
               blurDataURL={PLACEHOLDER_IMAGE}
             />
@@ -34,6 +36,7 @@ export function GameCard({ game }: GameCardProps) {
               <ImageOffIcon className="size-6" />
             </div>
           )}
+          <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tr from-black/25 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-70" />
         </div>
 
         <div className="flex flex-1 flex-col justify-between gap-6 p-6">
