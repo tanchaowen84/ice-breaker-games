@@ -8,13 +8,16 @@ import { Badge } from '@/components/ui/badge';
 import { LocaleLink } from '@/i18n/navigation';
 import { formatDate } from '@/lib/formatter';
 import { getTableOfContents } from '@/lib/blog/toc';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants';
+import { getBaseUrl, getImageUrl, getUrlWithLocale } from '@/lib/urls/urls';
 import type { Game } from 'content-collections';
 import { ArrowLeftIcon, CalendarIcon, Clock3Icon, ImageOffIcon, ListTreeIcon } from 'lucide-react';
+import type { Locale } from 'next-intl';
 import Image from 'next/image';
-import { PLACEHOLDER_IMAGE } from '@/lib/constants';
 
 interface GamePageProps {
   game: Game;
+  locale: Locale;
   labels: {
     home: string;
     games: string;
@@ -33,14 +36,23 @@ interface GamePageProps {
   };
 }
 
-export async function GamePage({ game, labels }: GamePageProps) {
+export async function GamePage({ game, labels, locale }: GamePageProps) {
   const publishDate = formatDate(new Date(game.date));
   const toc = await getTableOfContents(game.content);
   const hasToc = Boolean(toc?.items && toc.items.length > 0);
+  const pageUrl = getUrlWithLocale(game.slug, locale);
+  const structuredData = buildGameJsonLd({ game, locale, pageUrl });
 
   return (
     <Container className="py-16 px-4">
       <article className="mx-auto flex w-full max-w-4xl flex-col gap-12">
+        {structuredData ? (
+          <script
+            type="application/ld+json"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
+        ) : null}
         <GameBreadcrumbs
           homeLabel={labels.home}
           gamesLabel={labels.games}
@@ -163,4 +175,249 @@ export async function GamePage({ game, labels }: GamePageProps) {
       </article>
     </Container>
   );
+}
+
+interface BuildSchemaParams {
+  game: Game;
+  locale: Locale;
+  pageUrl: string;
+}
+
+function buildGameJsonLd({ game, locale, pageUrl }: BuildSchemaParams) {
+  if (!game) {
+    return null;
+  }
+
+  const baseUrl = getBaseUrl();
+  const imageUrl = getImageUrl(game.image ?? '/og.png');
+  const faqs = extractFaqEntries(game.content);
+  const howToSteps = extractHowToSteps(game.content);
+  const videoUrl = extractYoutubeUrl(game.content);
+  const videoId = videoUrl ? extractYoutubeId(videoUrl) : null;
+  const readTime = game.estimatedTime
+    ? `PT${Math.max(1, Number(game.estimatedTime))}M`
+    : undefined;
+  const facilitationTime = parseDurationToIso(game.duration);
+  const publisher = {
+    '@type': 'Organization',
+    name: 'Ice Breaker Games',
+    url: baseUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: getImageUrl('/logo.png'),
+    },
+  };
+  const graph: Record<string, any>[] = [];
+
+  graph.push({
+    '@type': 'Article',
+    '@id': `${pageUrl}#article`,
+    headline: game.title,
+    description: game.description,
+    image: imageUrl,
+    author: publisher,
+    publisher,
+    datePublished: new Date(game.date).toISOString(),
+    dateModified: new Date(game.date).toISOString(),
+    inLanguage: locale,
+    mainEntityOfPage: pageUrl,
+    wordCount: game.content?.split(/\s+/).filter(Boolean).length,
+    keywords: game.scenes?.join(', '),
+    about: game.scenes,
+    timeRequired: readTime,
+    audience: game.participants
+      ? {
+          '@type': 'Audience',
+          audienceType: game.participants,
+        }
+      : undefined,
+  });
+
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Games',
+        item: getUrlWithLocale('/games', locale),
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: game.title,
+        item: pageUrl,
+      },
+    ],
+  });
+
+  if (howToSteps.length > 0) {
+    graph.push({
+      '@type': 'HowTo',
+      name: `${game.title} – Official Rules`,
+      description:
+        'Follow these three facilitation phases to run a polished Two Truths and a Lie session.',
+      totalTime: facilitationTime,
+      step: howToSteps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.name,
+        text: step.description,
+      })),
+      supply: Array.isArray(game.materials)
+        ? game.materials.map((material) => ({
+            '@type': 'HowToSupply',
+            name: material,
+          }))
+        : undefined,
+    });
+  }
+
+  if (videoUrl && videoId) {
+    graph.push({
+      '@type': 'VideoObject',
+      name: `${game.title} Walkthrough`,
+      description: game.description,
+      embedUrl: videoUrl,
+      contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+      publisher,
+    });
+  }
+
+  if (faqs.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    });
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  };
+}
+
+function extractYoutubeUrl(content: string) {
+  if (!content) return undefined;
+  const match = content.match(/https:\/\/www\.youtube\.com\/embed\/[\w-]+[?\w=]*/);
+  return match ? match[0] : undefined;
+}
+
+function extractYoutubeId(url: string) {
+  const idMatch = url.match(/embed\/([\w-]+)/);
+  return idMatch ? idMatch[1] : undefined;
+}
+
+function extractFaqEntries(content: string) {
+  if (!content?.includes('Frequently Asked Questions')) {
+    return [];
+  }
+  const faqBlock = content.split('## Frequently Asked Questions')[1] || '';
+  const regex = /\*\*Q:\s*([^*]+)\*\*[\s\S]*?\*\*A:\*\*\s*([^\n]+(?:\n(?!\*\*Q:).+)*)/g;
+  const faqs: { question: string; answer: string }[] = [];
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(faqBlock))) {
+    const question = cleanMarkdownText(match[1]);
+    const answer = cleanMarkdownText(match[2]);
+    if (question && answer) {
+      faqs.push({ question, answer });
+    }
+  }
+  return faqs;
+}
+
+function extractHowToSteps(content: string) {
+  if (!content?.includes('Step-by-Step Rules and Mechanics')) {
+    return [];
+  }
+  const section = content
+    .split('### Step-by-Step Rules and Mechanics')[1]
+    ?.split('### Pro Tips')[0];
+  if (!section) {
+    return [];
+  }
+
+  const lines = section.split('\n');
+  const steps: { name: string; description: string }[] = [];
+  let current: { name: string; intro: string; details: string[] } | null = null;
+
+  for (const rawLine of lines) {
+    const line = rawLine.trimEnd();
+    const trimmed = line.trimStart();
+    const phaseMatch = trimmed.match(/^\* \*\*(Phase \d+: [^*]+)\*\*:\s*(.*)$/);
+    if (phaseMatch) {
+      if (current) {
+        steps.push({
+          name: current.name,
+          description: cleanMarkdownText(
+            [current.intro, ...current.details].join(' ')
+          ),
+        });
+      }
+      current = {
+        name: cleanMarkdownText(phaseMatch[1]),
+        intro: cleanMarkdownText(phaseMatch[2] ?? ''),
+        details: [],
+      };
+      continue;
+    }
+
+    if (!current) {
+      continue;
+    }
+
+    const bulletMatch = trimmed.match(/^\*\s+(.*)$/);
+    if (bulletMatch) {
+      current.details.push(cleanMarkdownText(bulletMatch[1] ?? ''));
+    }
+  }
+
+  if (current) {
+    steps.push({
+      name: current.name,
+      description: cleanMarkdownText(
+        [current.intro, ...current.details].join(' ')
+      ),
+    });
+  }
+
+  return steps.filter((step) => step.name && step.description);
+}
+
+function parseDurationToIso(duration?: string) {
+  if (!duration) return undefined;
+  const match = duration.match(/(\d+)(?:\s*-\s*(\d+))?\s*(hour|hours|hr|hrs|minute|minutes|min|m|h)/i);
+  if (!match) return undefined;
+  const start = Number(match[1]);
+  const end = match[2] ? Number(match[2]) : undefined;
+  let minutes = end ? Math.round((start + end) / 2) : start;
+  const unit = match[3].toLowerCase();
+  if (unit.startsWith('hour') || unit === 'h' || unit === 'hr' || unit === 'hrs') {
+    minutes *= 60;
+  }
+  return `PT${minutes}M`;
+}
+
+function cleanMarkdownText(input?: string) {
+  if (!input) return '';
+  return input
+    .replace(/\*\*/g, '')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '$1')
+    .replace(/`/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }

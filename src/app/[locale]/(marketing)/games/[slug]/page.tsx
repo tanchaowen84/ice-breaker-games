@@ -67,6 +67,7 @@ export default async function GameDetailPage({
   return (
     <GamePage
       game={game}
+      locale={locale}
       labels={{
         home: commonT('home'),
         games: gamesIndexT('title'),
