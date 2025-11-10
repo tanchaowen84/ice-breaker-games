@@ -59,14 +59,17 @@ export default function QuickStartSection() {
             </p>
           </div>
           {/* Card 3 */}
-          <div className="rounded-xl border border-slate-200 bg-white/80 p-5 shadow-sm">
+          <LocaleLink
+            href="/games/would-you-rather"
+            className="rounded-xl border border-slate-200 bg-white/80 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-300"
+          >
             <h3 className="font-bricolage-grotesque font-semibold text-slate-800">
               {t('quickGames.game3.title')}
             </h3>
             <p className="mt-1 text-sm text-slate-600">
               {t('quickGames.game3.description')}
             </p>
-          </div>
+          </LocaleLink>
         </div>
       </div>
     </section>
