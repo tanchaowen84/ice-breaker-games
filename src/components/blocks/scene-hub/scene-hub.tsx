@@ -1,5 +1,7 @@
 import { Badge } from '@/components/ui/badge';
+import { LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
+import type React from 'react';
 
 const SCENE_KEYS = [
   'meetings',
@@ -9,6 +11,63 @@ const SCENE_KEYS = [
   'teamBuilding',
   'largeGroups',
 ];
+
+// Game links mapping for internal linking
+const GAME_LINKS: Record<string, string> = {
+  'Jenga Questions': '/games/jenga-questions',
+  'Would You Rather': '/games/would-you-rather',
+  'Two Truths and a Lie': '/games/two-truths-and-a-lie',
+  // Add more games as needed
+};
+
+// Helper function to render examples with internal game links
+function renderExamplesWithLinks(examplesText: string): React.ReactNode {
+  // Split by quotes and process each part
+  const parts = examplesText.split(/(['"]).*?\1/);
+  const matches = examplesText.match(/(['"]).*?\1/g) || [];
+
+  const elements: React.ReactNode[] = [];
+  parts.forEach((part, index) => {
+    // Add regular text parts
+    if (part) {
+      elements.push(<span key={`text-${index}`}>{part}</span>);
+    }
+
+    // Process quoted content
+    if (matches[index]) {
+      const quoteContent = matches[index].slice(1, -1); // Remove quotes
+
+      // Check if this is a known game
+      if (GAME_LINKS[quoteContent]) {
+        elements.push(
+          <LocaleLink
+            key={`link-${index}`}
+            href={GAME_LINKS[quoteContent]}
+            className="font-semibold not-italic text-slate-700 underline underline-offset-2 hover:text-primary transition-colors"
+          >
+            {matches[index][0]}
+            {quoteContent}
+            {matches[index][0]}
+          </LocaleLink>
+        );
+      } else {
+        // Regular bold text for non-game content
+        elements.push(
+          <strong
+            key={`quote-${index}`}
+            className="font-semibold not-italic text-slate-700"
+          >
+            {matches[index][0]}
+            {quoteContent}
+            {matches[index][0]}
+          </strong>
+        );
+      }
+    }
+  });
+
+  return elements;
+}
 
 export default function SceneHubSection() {
   const t = useTranslations('HomePage.sceneHub');
@@ -47,23 +106,8 @@ export default function SceneHubSection() {
                 <p className="mt-2 pl-4 italic text-slate-500">
                   <span className="not-italic font-semibold text-slate-600">
                     e.g.
-                  </span>{
-                    ' '
-                  }
-                  {t(`scenes.${key}.helper.examples` as any)
-                    .split("'")
-                    .map((part: any, index: any) =>
-                      index % 2 === 1 ? (
-                        <strong
-                          key={index}
-                          className="font-semibold not-italic text-slate-700"
-                        >
-                          '{part}'
-                        </strong>
-                      ) : (
-                        <span key={index}>{part}</span>
-                      )
-                    )}
+                  </span>{' '}
+                  {renderExamplesWithLinks(t(`scenes.${key}.helper.examples` as any))}
                 </p>
               </div>
             </article>
