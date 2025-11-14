@@ -17,6 +17,7 @@ const GAME_LINKS: Record<string, string> = {
   'Jenga Questions': '/games/jenga-questions',
   'Would You Rather': '/games/would-you-rather',
   'Two Truths and a Lie': '/games/two-truths-and-a-lie',
+  'Human Knot': '/games/human-knot',
   // Add more games as needed
 };
 

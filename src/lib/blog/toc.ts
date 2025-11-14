@@ -63,7 +63,10 @@ function getItems(node, current): Items {
 }
 
 const getToc = () => (node, file) => {
-  const table = toc(node);
+  const table = toc(node, {
+    maxDepth: 2, // Only include H1 and H2 headings
+    tight: true,
+  });
   file.data = getItems(table.map, {});
 };
 
