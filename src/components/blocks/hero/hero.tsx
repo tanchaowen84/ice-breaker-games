@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 // Dynamically import the spinning wheel component with SSR disabled
 const SpinningWheel = dynamic(() => import('@/components/wheel/spinning-wheel').then(mod => ({ default: mod.SpinningWheel })), {
@@ -58,6 +59,23 @@ export default function HeroSection() {
     setSelectedGame(game);
     setMustSpin(false);
   }, []);
+
+  // Get the game URL if the selected game has a dedicated page
+  const getGameUrl = useCallback((gameName: string) => {
+    // Map of game names to their slugs
+    const gameSlugMap: Record<string, string> = {
+      'Zip Zap Zop': 'zip-zap-zop',
+      'Two Truths and a Lie': 'two-truths-and-a-lie',
+      'Human Knot': 'human-knot',
+      'Would You Rather': 'would-you-rather',
+      'Jenga Questions': 'jenga-questions',
+    };
+
+    const slug = gameSlugMap[gameName];
+    return slug ? `/games/${slug}` : null;
+  }, []);
+
+  const gameUrl = selectedGame ? getGameUrl(selectedGame) : null;
 
   const spinHint = useMemo(() => {
     return mustSpin ? t('spinning') : t('hint');
@@ -135,9 +153,19 @@ export default function HeroSection() {
                 <p className="text-xs font-semibold uppercase tracking-wide text-[#5647e1]">
                   {t('resultHeading')}
                 </p>
-                <p className="mt-1 text-lg font-semibold text-slate-900">
-                  {selectedGame}
-                </p>
+                <div className="mt-1 flex items-center justify-between">
+                  <p className="text-lg font-semibold text-slate-900">
+                    {selectedGame}
+                  </p>
+                  {gameUrl && (
+                    <Link
+                      href={gameUrl}
+                      className="inline-flex items-center justify-center rounded-lg bg-[#5647e1] px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#4c3ec8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5647e1] focus-visible:ring-offset-2"
+                    >
+                      查看详情
+                    </Link>
+                  )}
+                </div>
               </div>
             )}
           </div>
