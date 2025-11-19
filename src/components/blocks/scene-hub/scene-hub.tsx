@@ -18,6 +18,7 @@ const GAME_LINKS: Record<string, string> = {
   'Would You Rather': '/games/would-you-rather',
   'Two Truths and a Lie': '/games/two-truths-and-a-lie',
   'Human Knot': '/games/human-knot',
+  'Marshmallow Challenge': '/games/marshmallow-challenge',
   // Add more games as needed
 };
 

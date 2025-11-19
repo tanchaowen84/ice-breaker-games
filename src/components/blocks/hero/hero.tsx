@@ -69,6 +69,7 @@ export default function HeroSection() {
       'Human Knot': 'human-knot',
       'Would You Rather': 'would-you-rather',
       'Jenga Questions': 'jenga-questions',
+      'Marshmallow Challenge': 'marshmallow-challenge',
     };
 
     const slug = gameSlugMap[gameName];
